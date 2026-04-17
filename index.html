@@ -42,18 +42,20 @@
         .hero h1 { font-size: 3.5rem; margin: 15px 0 5px 0; text-transform: uppercase; letter-spacing: 4px; }
         .hero p { color: var(--neon-lime); font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; }
 
-        /* NUEVO: Botón de Booking en el Hero */
+        /* Botón de Booking en el Hero (CTA) */
         .btn-booking {
             display: inline-block;
             background: var(--neon-lime);
             color: black;
-            padding: 12px 30px;
-            border-radius: 5px;
+            padding: 14px 35px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin: 10px 0 30px 0;
             transition: 0.3s;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
             box-shadow: 0 0 15px rgba(50, 255, 0, 0.3);
         }
         .btn-booking:hover {
@@ -83,7 +85,7 @@
             color: black;
         }
 
-        /* NUEVO: WhatsApp Flotante */
+        /* WhatsApp Flotante */
         .wpp-float {
             position: fixed;
             bottom: 20px;
@@ -134,7 +136,7 @@
             border-bottom: 2px solid var(--neon-lime);
         }
 
-        /* TABS & CARDS */
+        /* TABS */
         .tab { display: none; padding: 50px 20px; max-width: 1000px; margin: 0 auto; animation: slideUp 0.5s ease-out; }
         .active { display: block; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -149,12 +151,37 @@
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
+        /* Botón DISPARAR KICK Corregido */
+        #dropBtn {
+            display: block;
+            margin: 30px auto;
+            background: transparent;
+            color: var(--neon-lime);
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 3px solid var(--neon-lime);
+            text-transform: uppercase;
+            transition: 0.3s;
+            box-shadow: inset 0 0 10px rgba(50, 255, 0, 0.2);
+        }
+        #dropBtn:hover {
+            background: var(--neon-lime);
+            color: black;
+            box-shadow: 0 0 30px var(--neon-lime);
+            transform: scale(1.02);
+        }
+        #dropBtn:active { transform: scale(0.95); }
+
+        /* Estilos Juego */
+        #gameCanvas { background: #000; border: 2px solid var(--neon-lime); display: block; margin: 20px auto; max-width: 100%; border-radius: 12px; cursor: crosshair; }
+        #scoreContainer { margin-bottom: 15px; font-family: monospace; font-size: 1.5rem; color: var(--neon-lime); font-weight: bold; }
+
         .rider-list { list-style: none; padding: 0; }
         .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); }
         .rider-list li::before { content: '⚡'; position: absolute; left: 0; color: var(--neon-lime); }
-
-        #gameCanvas { background: #000; border: 2px solid var(--neon-lime); display: block; margin: 20px auto; max-width: 100%; border-radius: 12px; cursor: crosshair; }
-        #scoreContainer { margin-bottom: 15px; font-family: monospace; font-size: 1.5rem; color: var(--neon-lime); }
 
         footer { padding: 60px 40px; color: #333; font-size: 0.75rem; border-top: 1px solid #111; }
         .status-on { color: var(--terminal-green); font-weight: bold; }
@@ -162,7 +189,7 @@
 </head>
 <body>
 
-<a href="https://wa.me/573194465702" class="wpp-float" target="_blank">
+<a href="https://wa.me/573000000000" class="wpp-float" target="_blank">
     <svg width="35" height="35" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
 </a>
 
@@ -193,8 +220,8 @@
 <div id="home" class="tab active">
     <div class="card" style="text-align: center;">
         <h2>System Check</h2>
-        <p>Prepara la señal antes del próximo drop.</p>
-        <button id="dropBtn" style="margin-top: 20px;">DISPARAR KICK</button>
+        <p style="color: var(--text-gray);">Carga los sistemas de audio para el próximo Drop.</p>
+        <button id="dropBtn">DISPARAR KICK</button>
     </div>
 </div>
 
@@ -205,6 +232,13 @@
     </div>
 </div>
 
+<div id="media" class="tab">
+    <div class="card">
+        <h2>Visuals & Live Performances</h2>
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/cX31J616-Tc" frameborder="0" allowfullscreen style="border-radius: 12px; border: 1px solid #333;"></iframe>
+    </div>
+</div>
+
 <div id="bio" class="tab">
     <div class="card">
         <h2>The Artist</h2>
@@ -212,7 +246,7 @@
             "Diseñando el futuro del Hardstyle desde el corazón de Medellín. Energía técnica, kicks procesados con precisión de ingeniería y sets diseñados para la pista."
         </p>
         <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem;">
-            Originario de Envigado, <strong>TheDJSlett</strong> ha forjado su sonido bajo la disciplina de <strong>La Cantera Studios</strong> (Bull Nene). Su propuesta no es solo musical, es técnica: como estudiante de <strong>Ingeniería Electrónica en la IUE</strong>, aplica el rigor del procesamiento de señales para crear una experiencia sonora de alto impacto.
+            Originario de Envigado, <strong>TheDJSlett</strong> ha forjado su sonido bajo la disciplina de <strong>La Cantera Studios</strong> (Bull Nene). Como estudiante de <strong>Ingeniería Electrónica en la IUE</strong>, fusiona el rigor técnico con el diseño sonoro de alto impacto.
         </p>
         
         <h2 style="margin-top: 50px;">Technical Rider</h2>
@@ -229,7 +263,6 @@
         <h2>Booking & Management</h2>
         <p style="font-size: 1.8rem; color: var(--neon-lime); font-weight: 900; margin: 25px 0;">contact.slett@gmail.com</p>
         <p style="color: var(--text-gray);">Medellín, Colombia 🇨🇴</p>
-        <p style="margin-top: 20px; font-size: 0.8rem; color: #555;">Disponibilidad para presentaciones nacionales e internacionales.</p>
     </div>
 </div>
 
@@ -251,6 +284,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.querySelectorAll("nav button");
     const tabs = document.querySelectorAll(".tab");
+    const sfxDrop = document.getElementById("sfxDrop");
 
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -264,10 +298,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    const sfxDrop = document.getElementById("sfxDrop");
     document.getElementById("dropBtn").addEventListener("click", () => {
         sfxDrop.currentTime = 0;
-        sfxDrop.play();
+        sfxDrop.play().catch(e => console.log("Audio check"));
     });
 
     let gameActive = false;
@@ -289,7 +322,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 sfxDrop.currentTime = 0; sfxDrop.play();
                 score += 10;
                 scoreDisplay.innerText = score.toString().padStart(3, '0');
-                // Límite de velocidad (Fix Pro)
+                
+                // Fix de velocidad Pro (límites)
                 let speedFactor = 1.15;
                 dx = Math.max(Math.min(dx * -speedFactor, 12), -12);
                 dy = Math.max(Math.min(dy * speedFactor, 12), -12);
