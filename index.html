@@ -3,31 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TheDJSlett</title>
+    <title>TheDJSlett | Official EPK</title>
     <link rel="icon" href="logo.webp" type="image/webp">
     <style>
         :root {
             --neon-lime: #32ff00;
             --dark-bg: #050505;
-            --card-bg: #111111;
+            --card-bg: rgba(17, 17, 17, 0.9);
             --text-gray: #cccccc;
             --terminal-green: #1aed02;
         }
 
+        /* FONDO ANIMADO DE ENERGÍA */
         body {
             margin: 0;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: var(--dark-bg);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(50, 255, 0, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(50, 255, 0, 0.05) 0%, transparent 40%);
+            background-attachment: fixed;
             color: white;
             text-align: center;
             overflow-x: hidden;
+            animation: pulseBackground 10s infinite alternate;
+        }
+
+        @keyframes pulseBackground {
+            from { background-position: 0% 0%; }
+            to { background-position: 100% 100%; }
         }
 
         /* HERO SECTION */
         .hero { 
             padding: 80px 20px; 
-            border-bottom: 2px solid #111;
-            background: radial-gradient(circle at center, #111 0%, #050505 100%);
+            position: relative;
+            z-index: 2;
         }
         .hero img {
             width: 160px;
@@ -42,6 +53,21 @@
         
         .hero h1 { font-size: 3.5rem; margin: 15px 0 5px 0; text-transform: uppercase; letter-spacing: 4px; }
         .hero p { color: var(--neon-lime); font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; }
+
+        .btn-download {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            font-size: 0.7rem;
+        }
+        .btn-download:hover { background: white; color: black; }
 
         .social-links {
             display: flex;
@@ -60,15 +86,11 @@
             transition: 0.3s;
             font-weight: bold;
         }
-        .social-links a:hover {
-            background: var(--neon-lime);
-            color: black;
-            box-shadow: 0 0 15px var(--neon-lime);
-        }
+        .social-links a:hover { background: var(--neon-lime); color: black; box-shadow: 0 0 15px var(--neon-lime); }
 
         /* NAVIGATION */
         nav {
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.9);
             padding: 10px;
             position: sticky;
             top: 0;
@@ -80,7 +102,7 @@
         }
         nav button {
             margin: 5px;
-            border: 1px solid transparent;
+            border: none;
             background: transparent;
             color: #888;
             padding: 10px 18px;
@@ -90,17 +112,13 @@
             transition: 0.3s;
             font-size: 0.85rem;
         }
-        nav button:hover { color: var(--neon-lime); }
-        nav button.active-btn {
-            color: var(--neon-lime);
-            border-bottom: 2px solid var(--neon-lime);
-        }
+        nav button.active-btn { color: var(--neon-lime); border-bottom: 2px solid var(--neon-lime); }
 
-        /* TABS LOGIC */
+        /* TABS */
         .tab {
             display: none;
             padding: 50px 20px;
-            max-width: 1000px;
+            max-width: 900px;
             margin: 0 auto;
             animation: slideUp 0.5s ease-out;
         }
@@ -117,40 +135,17 @@
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
-        /* RELEASES */
-        .releases-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
-        }
-        .release-item {
-            background: #000;
-            border-radius: 12px;
+        /* SPOTIFY CONTAINER */
+        .spotify-container {
+            border-radius: 15px;
             overflow: hidden;
             border: 1px solid #333;
-            transition: 0.4s;
+            background: #000;
         }
-        .release-item:hover { border-color: var(--neon-lime); transform: translateY(-10px); }
-        .release-item img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
-        .release-info { padding: 20px; text-align: center; }
-        
-        .btn-stream {
-            display: block;
-            margin-top: 15px;
-            padding: 12px;
-            background: var(--neon-lime);
-            color: black;
-            text-decoration: none;
-            font-weight: 900;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            transition: 0.2s;
-        }
-        .btn-stream:active { transform: scale(0.95); }
 
         /* RIDER LIST */
         .rider-list { list-style: none; padding: 0; }
-        .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); font-size: 0.95rem; }
+        .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); }
         .rider-list li::before { content: '⚡'; position: absolute; left: 0; color: var(--neon-lime); }
 
         /* GAME */
@@ -161,7 +156,6 @@
             margin: 20px auto; 
             max-width: 100%;
             border-radius: 12px;
-            cursor: crosshair;
         }
 
         #dropBtn {
@@ -169,25 +163,20 @@
             margin: 20px auto;
             background: var(--neon-lime);
             color: black;
-            padding: 22px 70px;
-            font-size: 1.8rem;
+            padding: 20px 50px;
+            font-size: 1.5rem;
             font-weight: 900;
-            border-radius: 60px;
+            border-radius: 50px;
             cursor: pointer;
             border: none;
-            box-shadow: 0 0 30px rgba(50, 255, 0, 0.3);
             transition: 0.3s;
         }
-        #dropBtn:hover { box-shadow: 0 0 50px rgba(50, 255, 0, 0.5); transform: scale(1.05); }
 
-        /* FOOTER TECH DETAILS */
         footer { 
             padding: 60px 40px; 
-            color: #333; 
+            color: #444; 
             font-size: 0.75rem; 
             border-top: 1px solid #111;
-            letter-spacing: 1px;
-            line-height: 1.6;
         }
         .status-on { color: var(--terminal-green); font-weight: bold; }
     </style>
@@ -199,119 +188,82 @@
     <h1>TheDJSlett</h1>
     <p>HARDSTYLE DJ / PRODUCER</p>
     
+    <button class="btn-download" onclick="window.print()">📥 Download EPK (PDF)</button>
+
     <div class="social-links">
-        <a href="https://open.spotify.com/intl-es/artist/2dsFFDlP0HN09zODqQqfem" target="_blank">Spotify</a>
+        <a href="https://open.spotify.com/playlist/37i9dQZF1E8O6389mZqSnd" target="_blank">Spotify</a>
         <a href="https://on.soundcloud.com/yntIGIY9C8KfnA6DqP" target="_blank">SoundCloud</a>
-        <a href="https://www.instagram.com/thedjslett?igsh=aHdjbXNzbm9uMXJm" target="_blank">Instagram</a>
+        <a href="https://www.instagram.com/thedjslett" target="_blank">Instagram</a>
         <a href="https://youtube.com/@thedjslett" target="_blank">YouTube</a>
     </div>
 </div>
 
-<nav id="navbar">
-    <button data-tab="home" class="active-btn">Inicio</button>
-    <button data-tab="music">Música</button>
-    <button data-tab="media">Media</button>
+<nav>
+    <button data-tab="inicio" class="active-btn">Inicio</button>
+    <button data-tab="musica">Música</button>
     <button data-tab="bio">Bio & Rider</button>
-    <button data-tab="contact">Contacto</button>
+    <button data-tab="contacto">Contacto</button>
     <button data-tab="play">Playground</button>
 </nav>
 
-<div id="home" class="tab active">
+<div id="inicio" class="tab active">
     <div class="card" style="text-align: center;">
-        <h2>System Check</h2>
-        <p>Carga los sistemas de audio para el próximo Drop.</p>
+        <h2>System Status</h2>
+        <p>Carga los sistemas para el próximo drop.</p>
         <button id="dropBtn">DISPARAR KICK</button>
     </div>
 </div>
 
-<div id="music" class="tab">
+<div id="musica" class="tab">
     <div class="card">
-        <h2>Lanzamientos Recientes</h2>
-        <div class="releases-grid">
-            <div class="release-item">
-                <img src="cover1.png" alt="We Are One"> 
-                <div class="release-info">
-                    <strong>We Are One</strong>
-                    <a href="https://open.spotify.com/intl-es/track/3pDLOWuNiwciOx2HJz8U5q?si=3497d3ae99274c0d" target="_blank" class="btn-stream">LISTEN ON SPOTIFY</a>
-                </div>
-            </div>
-            <div class="release-item">
-                <img src="cover2.jpg" alt="Sonic Ascension"> 
-                <div class="release-info">
-                    <strong>Sonic Ascension</strong>
-                    <a href="https://open.spotify.com/intl-es/track/6jSXLfvbzUjhoJmUJa20If?si=57836aa16dab4d40" target="_blank" class="btn-stream">LISTEN ON SPOTIFY</a>
-                </div>
-            </div>
+        <h2>Catálogo Oficial</h2>
+        <div class="spotify-container">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1E8O6389mZqSnd?utm_source=generator&theme=0" width="100%" height="450" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
-        
-        <div style="margin-top: 40px; background: #000; padding: 25px; border-radius: 12px; border: 1px solid #222;">
-            <p style="margin-bottom: 15px; font-weight: bold; color: var(--neon-lime); text-transform: uppercase; font-size: 0.8rem;">
-                📟 Pre-escucha Masterizada
-            </p>
-            <audio id="mainAudio" controls style="width: 100%;">
-                <source src="track.mp3" type="audio/mpeg">
-            </audio>
-        </div>
-    </div>
-</div>
-
-<div id="media" class="tab">
-    <div class="card">
-        <h2>Visuals & Live Performances</h2>
-        <iframe width="100%" height="450" src="https://www.youtube.com/embed/cX31J616-Tc" frameborder="0" allowfullscreen style="border-radius: 12px; border: 1px solid #333;"></iframe>
     </div>
 </div>
 
 <div id="bio" class="tab">
     <div class="card">
         <h2>Biografía</h2>
-        <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem;">
-            TheDJSlett es un DJ y productor colombiano de Hardstyle, Rawstyle y Hardcore, originario de Envigado. 
-            Inició su carrera en 2020 y fue parte de <strong>La Cantera Studios</strong>, programa impulsado por Bull Nene 
-            enfocado en el desarrollo de nuevos talentos. Actualmente combina su carrera musical con sus estudios de 
-            <strong>Ingeniería Electrónica en la Institución Universitaria de Envigado (IUE)</strong>, aplicando conocimientos técnicos al diseño sonoro y optimización de hardware.
+        <p style="line-height: 1.8; color: var(--text-gray);">
+            TheDJSlett es un productor colombiano de Hardstyle originario de Envigado. 
+            Actualmente combina su carrera musical con sus estudios de <strong>Ingeniería Electrónica en la IUE</strong>, 
+            enfocándose en el diseño sonoro y la optimización de hardware para presentaciones en vivo.
         </p>
         
-        <h2 style="margin-top: 50px;">Technical Rider (Requerimientos)</h2>
+        <h2 style="margin-top: 40px;">Technical Rider</h2>
         <ul class="rider-list">
-            <li>2x Pioneer CDJ-2000 NXS2 o superior (Linkeados via Ethernet)</li>
-            <li>1x Pioneer DJM-900 NXS2 / DJM-V10</li>
-            <li>Monitoreo: 2 monitores de cabina activos con control independiente</li>
-            <li>Conexión eléctrica: 110V/60Hz con regulador (Recomendado)</li>
-            <li>Superficie estable libre de vibraciones excesivas</li>
+            <li>2x Pioneer CDJ-2000 NXS2 o superior</li>
+            <li>1x Pioneer DJM-900 NXS2</li>
+            <li>Monitoreo independiente en cabina</li>
         </ul>
     </div>
 </div>
 
-<div id="contact" class="tab">
-    <div class="card">
-        <h2>Booking & Collabs</h2>
-        <p>Para contratación de shows, solicitud de remixes o dubplates:</p>
-        <p style="font-size: 1.8rem; color: var(--neon-lime); font-weight: 900; margin: 25px 0;">contact.slett@gmail.com</p>
-        <p style="color: var(--text-gray);">Ubicación: Envigado / Medellín, Colombia 🇨🇴</p>
+<div id="contacto" class="tab">
+    <div class="card" style="text-align: center;">
+        <h2>Booking</h2>
+        <p>contact.slett@gmail.com</p>
+        <p style="color: var(--text-gray);">Envigado, Antioquia 🇨🇴</p>
     </div>
 </div>
 
 <div id="play" class="tab">
     <div class="card" style="text-align: center;">
         <h2>Catch the Kick</h2>
-        <p>Haz clic en el nodo central para aumentar la frecuencia del drop.</p>
         <canvas id="gameCanvas" width="400" height="300"></canvas>
     </div>
 </div>
 
 <footer>
-    © 2026 TheDJSlett. Todos los derechos reservados. <br>
-    <span class="status-on">SYSTEM_ONLINE</span> | Sample Rate: 44.1kHz | Buffer: 256ms <br>
-    Desarrollado para la escena Hardstyle Colombiana.
+    © 2026 TheDJSlett | <span class="status-on">SYSTEM_ONLINE</span> | 44.1kHz <br>
+    Desarrollado para la escena Hardstyle.
 </footer>
 
 <audio id="sfxDrop"><source src="drop.mp3" type="audio/mpeg"></audio>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    
-    // --- NAVEGACIÓN ---
     const buttons = document.querySelectorAll("nav button");
     const tabs = document.querySelectorAll(".tab");
 
@@ -320,75 +272,46 @@ document.addEventListener("DOMContentLoaded", function() {
             const target = btn.getAttribute("data-tab");
             tabs.forEach(t => t.classList.remove("active"));
             buttons.forEach(b => b.classList.remove("active-btn"));
-            
             document.getElementById(target).classList.add("active");
             btn.classList.add("active-btn");
-            
             if(target === 'play') initGame();
-            window.scrollTo({top: 0, behavior: 'smooth'});
         });
     });
 
-    // --- EFECTO DE AUDIO DROP ---
     const sfxDrop = document.getElementById("sfxDrop");
-    const dropBtn = document.getElementById("dropBtn");
-    
-    dropBtn.addEventListener("click", () => {
+    document.getElementById("dropBtn").addEventListener("click", () => {
         sfxDrop.currentTime = 0;
-        sfxDrop.play().catch(e => console.log("Carga drop.mp3 para habilitar SFX"));
+        sfxDrop.play().catch(() => console.log("Falta drop.mp3"));
     });
 
-    // --- MINI JUEGO ---
-    let gameActive = false;
     function initGame() {
-        if(gameActive) return;
-        gameActive = true;
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
-        let x = 200, y = 150, dx = 4, dy = 4;
+        let x = 200, y = 150, dx = 3, dy = 3;
 
-        canvas.addEventListener("mousedown", (e) => {
+        canvas.onclick = (e) => {
             const rect = canvas.getBoundingClientRect();
-            const mx = e.clientX - rect.left;
-            const my = e.clientY - rect.top;
-            if (Math.sqrt((mx-x)**2 + (my-y)**2) < 25) {
-                sfxDrop.currentTime = 0;
-                sfxDrop.play();
-                // Aumento progresivo de velocidad
-                dx *= -1.15; dy *= 1.15; 
+            if (Math.sqrt((e.clientX - rect.left - x)**2 + (e.clientY - rect.top - y)**2) < 20) {
+                dx *= -1.1; dy *= 1.1;
+                sfxDrop.currentTime = 0; sfxDrop.play();
             }
-        });
+        };
 
-        function loop() {
-            // Detener dibujo si no estamos en la pestaña
-            if(!document.getElementById("play").classList.contains("active")) {
-                requestAnimationFrame(loop);
-                return;
-            }
-            
-            ctx.fillStyle = "rgba(0,0,0,0.25)";
+        function draw() {
+            if(!document.getElementById("play").classList.contains("active")) return;
+            ctx.fillStyle = "rgba(0,0,0,0.2)";
             ctx.fillRect(0,0,400,300);
-
-            x += dx; y += dy;
-            
-            // Rebotes
-            if(x < 15 || x > 385) dx *= -1;
-            if(y < 15 || y > 285) dy *= -1;
-
-            // Dibujo del nodo
             ctx.beginPath();
             ctx.arc(x, y, 15, 0, Math.PI*2);
             ctx.fillStyle = "#32ff00";
-            ctx.shadowBlur = 25;
-            ctx.shadowColor = "#32ff00";
             ctx.fill();
-            ctx.shadowBlur = 0; // Reset para rendimiento
-            
-            requestAnimationFrame(loop);
+            x += dx; y += dy;
+            if(x<15 || x>385) dx*=-1;
+            if(y<15 || y>285) dy*=-1;
+            requestAnimationFrame(draw);
         }
-        loop();
+        draw();
     }
-});
 </script>
 
 </body>
