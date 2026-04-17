@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheDJSlett | Official EPK</title>
+    <meta name="description" content="TheDJSlett - Hardstyle DJ & Producer from Medellín. Booking available.">
     <link rel="icon" href="logo.webp" type="image/webp">
     <style>
         :root {
@@ -42,7 +43,7 @@
         .hero h1 { font-size: 3.5rem; margin: 15px 0 5px 0; text-transform: uppercase; letter-spacing: 4px; }
         .hero p { color: var(--neon-lime); font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; }
 
-        /* Botón de Booking en el Hero (CTA) */
+        /* Botón de Booking Mejorado (Directo al correo) */
         .btn-booking {
             display: inline-block;
             background: var(--neon-lime);
@@ -52,7 +53,7 @@
             text-decoration: none;
             font-weight: 900;
             text-transform: uppercase;
-            margin: 10px 0 30px 0;
+            margin: 10px 0 20px 0;
             transition: 0.3s;
             letter-spacing: 1px;
             font-size: 0.9rem;
@@ -61,6 +62,14 @@
         .btn-booking:hover {
             transform: scale(1.05);
             box-shadow: 0 0 25px var(--neon-lime);
+        }
+
+        /* Prueba Social (Placeholder para cuando tengas stats) */
+        .social-proof {
+            color: var(--text-gray);
+            font-size: 0.8rem;
+            margin-bottom: 30px;
+            display: block;
         }
 
         .social-links {
@@ -85,7 +94,7 @@
             color: black;
         }
 
-        /* WhatsApp Flotante */
+        /* WhatsApp Flotante con Mensaje Intencional */
         .wpp-float {
             position: fixed;
             bottom: 20px;
@@ -151,27 +160,25 @@
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
-        /* Botón DISPARAR KICK Corregido */
+        /* Estética Corregida del Botón Kick */
         #dropBtn {
             display: block;
             margin: 30px auto;
             background: transparent;
             color: var(--neon-lime);
-            padding: 20px 50px;
-            font-size: 1.5rem;
+            padding: 18px 45px;
+            font-size: 1.3rem;
             font-weight: 900;
             border-radius: 8px;
             cursor: pointer;
-            border: 3px solid var(--neon-lime);
+            border: 2px solid var(--neon-lime);
             text-transform: uppercase;
             transition: 0.3s;
-            box-shadow: inset 0 0 10px rgba(50, 255, 0, 0.2);
         }
         #dropBtn:hover {
             background: var(--neon-lime);
             color: black;
             box-shadow: 0 0 30px var(--neon-lime);
-            transform: scale(1.02);
         }
         #dropBtn:active { transform: scale(0.95); }
 
@@ -189,7 +196,7 @@
 </head>
 <body>
 
-<a href="https://wa.me/573194465702" class="wpp-float" target="_blank">
+<a href="https://wa.me/573194465702?text=Hola%20quiero%20informacion%20para%20booking%20de%20TheDJSlett" class="wpp-float" target="_blank">
     <svg width="35" height="35" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
 </a>
 
@@ -198,10 +205,12 @@
     <h1>TheDJSlett</h1>
     <p>HARDSTYLE DJ / PRODUCER</p>
     
-    <a href="#contact" onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking">BOOKING / CONTACTO</a>
+    <a href="mailto:contact.slett@gmail.com?subject=Booking%20TheDJSlett" class="btn-booking">BOOKING / CONTACTO</a>
+    
+    <span class="social-proof">Apoyo en la escena Hardstyle 🇨🇴</span>
     
     <div class="social-links">
-        <a href="https://open.spotify.com/intl-es/artist/4X9Zf19U8GscfJ85Xf4YjZ" target="_blank">Spotify</a>
+        <a href="https://open.spotify.com/embed/artist/2PZzM66UfUe8P8M8I1x8yO?utm_source=generator&theme=05" target="_blank">Spotify</a>
         <a href="https://on.soundcloud.com/yntIGIY9C8KfnA6DqP" target="_blank">SoundCloud</a>
         <a href="https://www.instagram.com/thedjslett" target="_blank">Instagram</a>
         <a href="https://youtube.com/@thedjslett" target="_blank">YouTube</a>
@@ -232,21 +241,14 @@
     </div>
 </div>
 
-<div id="media" class="tab">
-    <div class="card">
-        <h2>Visuals & Live Performances</h2>
-        <iframe width="100%" height="450" src="https://www.youtube.com/embed/cX31J616-Tc" frameborder="0" allowfullscreen style="border-radius: 12px; border: 1px solid #333;"></iframe>
-    </div>
-</div>
-
 <div id="bio" class="tab">
     <div class="card">
         <h2>The Artist</h2>
         <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem; font-style: italic; border-left: 2px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px;">
-            "Diseñando el futuro del Hardstyle desde el corazón de Medellín. Energía técnica, kicks procesados con precisión de ingeniería y sets diseñados para la pista."
+            "Sets diseñados para pista, energía sin concesiones y enfoque directo a festivales."
         </p>
         <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem;">
-            Originario de Envigado, <strong>TheDJSlett</strong> ha forjado su sonido bajo la disciplina de <strong>La Cantera Studios</strong> (Bull Nene). Como estudiante de <strong>Ingeniería Electrónica en la IUE</strong>, fusiona el rigor técnico con el diseño sonoro de alto impacto.
+            TheDJSlett es un DJ y productor colombiano de Hardstyle y Rawstyle, originario de Envigado. Su carrera despegó como parte de <strong>La Cantera Studios</strong>. Actualmente fusiona su visión artística con su formación técnica como estudiante de <strong>Ingeniería Electrónica en la Institución Universitaria de Envigado (IUE)</strong>, aplicando conceptos de procesamiento de señales a su diseño sonoro.
         </p>
         
         <h2 style="margin-top: 50px;">Technical Rider</h2>
@@ -323,10 +325,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 score += 10;
                 scoreDisplay.innerText = score.toString().padStart(3, '0');
                 
-                // Fix de velocidad Pro (límites)
+                // Mensaje épico a los 100 puntos
+                if(score === 100) {
+                    alert("🔥 HARDSTYLE ACTIVATED 🔥");
+                }
+
+                // Fix de velocidad Pro (límites para sensación pulida)
                 let speedFactor = 1.15;
-                dx = Math.max(Math.min(dx * -speedFactor, 12), -12);
-                dy = Math.max(Math.min(dy * speedFactor, 12), -12);
+                dx = Math.max(Math.min(dx * -speedFactor, 8), -8);
+                dy = Math.max(Math.min(dy * speedFactor, 8), -8);
             }
         };
 
