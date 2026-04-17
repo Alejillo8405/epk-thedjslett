@@ -138,32 +138,6 @@
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
-        /* FORMULARIO */
-        .contact-form { display: flex; flex-direction: column; gap: 20px; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        .form-group label { font-size: 0.8rem; text-transform: uppercase; color: var(--neon-lime); font-weight: bold; letter-spacing: 1px; }
-        .form-group input, .form-group textarea {
-            background: var(--input-bg);
-            border: 1px solid #333;
-            padding: 15px;
-            color: white;
-            border-radius: 5px;
-            font-family: inherit;
-        }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--neon-lime); }
-        .btn-send {
-            background: var(--neon-lime);
-            color: black;
-            border: none;
-            padding: 15px;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        .btn-send:hover { box-shadow: 0 0 20px var(--neon-lime); }
-
         .rider-list { list-style: none; padding: 0; }
         .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); }
         .rider-list li::before { content: '⚡'; position: absolute; left: 0; color: var(--neon-lime); }
@@ -200,10 +174,10 @@
     <img src="logo.webp" alt="TheDJSlett Logo"> 
     <h1>TheDJSlett</h1>
     <p>HARDSTYLE DJ / PRODUCER</p>
-    <button onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking">INICIAR BOOKING</button>
+    <a href="mailto:contact.slett@gmail.com?subject=Booking TheDJSlett" class="btn-booking">BOOKING / CONTACTO</a>
     <span class="social-proof">Apoyo en la escena Hardstyle 🇨🇴</span>
     <div class="social-links">
-        <a href="https://open.spotify.com/intl-es/artist/5UqW9X59UoVqP6P1z9Y6n7" target="_blank">Spotify</a>
+        <a href="https://open.spotify.com/artist/4X9Zf119U8GscfJ85Xf4yz" target="_blank">Spotify</a>
         <a href="https://on.soundcloud.com/yntIGIY9C8KfnA6DqP" target="_blank">SoundCloud</a>
         <a href="https://www.instagram.com/thedjslett" target="_blank">Instagram</a>
         <a href="https://youtube.com/@thedjslett" target="_blank">YouTube</a>
@@ -230,7 +204,7 @@
 <div id="music" class="tab">
     <div class="card">
         <h2>Discografía Oficial</h2>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0pST9uU86v8?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/4X9Zf119U8GscfJ85Xf4yz?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 </div>
 
@@ -262,23 +236,9 @@
 <div id="contact" class="tab">
     <div class="card">
         <h2>Booking & Inquiry</h2>
-        <p style="margin-bottom: 30px; color: var(--text-gray);">Completa el formulario para solicitar una fecha o servicios de producción.</p>
-        <form class="contact-form" action="TU_URL_DE_FORMSPREE_AQUI" method="POST">
-            <div class="form-group">
-                <label>Nombre / Promotora</label>
-                <input type="text" name="name" placeholder="Ej: Agency Name" required>
-            </div>
-            <div class="form-group">
-                <label>Tu Correo Electrónico</label>
-                <input type="email" name="_replyto" placeholder="nombre@ejemplo.com" required>
-            </div>
-            <div class="form-group">
-                <label>Mensaje / Detalles del Evento</label>
-                <textarea name="message" rows="5" placeholder="Cuéntame sobre el evento..." required></textarea>
-            </div>
-            <input type="hidden" name="_subject" value="Nueva solicitud de Booking - TheDJSlett">
-            <button type="submit" class="btn-send">ENVIAR SOLICITUD</button>
-        </form>
+        <p style="font-size: 1.5rem; color: var(--neon-lime); font-weight: 900; margin-bottom: 10px;">contact.slett@gmail.com</p>
+        <p style="color: var(--text-gray);">Medellín, Colombia 🇨🇴</p>
+        <p style="margin-top: 20px; color: var(--text-gray); font-size: 0.9rem;">Para cotizaciones rápidas, usa el botón de WhatsApp flotante.</p>
     </div>
 </div>
 
@@ -338,8 +298,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 sfxDrop.currentTime = 0; sfxDrop.play();
                 score += 10;
                 scoreDisplay.innerText = score.toString().padStart(3, '0');
-                dx = Math.max(Math.min(dx * -1.15, 8), -8);
-                dy = Math.max(Math.min(dy * 1.15, 8), -8);
+                
+                // Limite de velocidad para el juego
+                dx = Math.max(Math.min(dx * -1.15, 10), -10);
+                dy = Math.max(Math.min(dy * 1.15, 10), -10);
+
+                if(score >= 100) {
+                    console.log("HARDSTYLE ACTIVATED");
+                }
             }
         };
 
