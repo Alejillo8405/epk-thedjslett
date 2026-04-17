@@ -38,25 +38,9 @@
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-        .hero img:hover { transform: rotate(5deg) scale(1.05); }
         
         .hero h1 { font-size: 3.5rem; margin: 15px 0 5px 0; text-transform: uppercase; letter-spacing: 4px; }
         .hero p { color: var(--neon-lime); font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; }
-
-        .btn-download {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            cursor: pointer;
-            margin-bottom: 25px;
-            transition: 0.3s;
-            font-weight: bold;
-        }
-        .btn-download:hover { background: white; color: black; }
 
         .social-links {
             display: flex;
@@ -75,7 +59,11 @@
             transition: 0.3s;
             font-weight: bold;
         }
-        .social-links a:hover { background: var(--neon-lime); color: black; box-shadow: 0 0 15px var(--neon-lime); }
+        .social-links a:hover {
+            background: var(--neon-lime);
+            color: black;
+            box-shadow: 0 0 15px var(--neon-lime);
+        }
 
         /* NAVIGATION */
         nav {
@@ -102,8 +90,10 @@
             transition: 0.3s;
             font-size: 0.85rem;
         }
-        nav button:hover { color: var(--neon-lime); }
-        nav button.active-btn { color: var(--neon-lime); border-bottom: 2px solid var(--neon-lime); }
+        nav button.active-btn {
+            color: var(--neon-lime);
+            border-bottom: 2px solid var(--neon-lime);
+        }
 
         /* TABS */
         .tab {
@@ -130,7 +120,6 @@
         .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); font-size: 0.95rem; }
         .rider-list li::before { content: '⚡'; position: absolute; left: 0; color: var(--neon-lime); }
 
-        /* GAME */
         #gameCanvas { 
             background: #000; 
             border: 2px solid var(--neon-lime); 
@@ -138,7 +127,6 @@
             margin: 20px auto; 
             max-width: 100%;
             border-radius: 12px;
-            cursor: crosshair;
         }
 
         #dropBtn {
@@ -152,7 +140,6 @@
             border-radius: 60px;
             cursor: pointer;
             border: none;
-            box-shadow: 0 0 30px rgba(50, 255, 0, 0.3);
             transition: 0.3s;
         }
 
@@ -161,7 +148,6 @@
             color: #333; 
             font-size: 0.75rem; 
             border-top: 1px solid #111;
-            letter-spacing: 1px;
         }
         .status-on { color: var(--terminal-green); font-weight: bold; }
     </style>
@@ -173,10 +159,8 @@
     <h1>TheDJSlett</h1>
     <p>HARDSTYLE DJ / PRODUCER</p>
     
-    <button class="btn-download" onclick="window.print()">📥 Download EPK (PDF)</button>
-
     <div class="social-links">
-        <a href="https://open.spotify.com/embed/track/TU_ID_AQUI?utm_source=generator&theme=02" target="_blank">Spotify</a>
+        <a href="https://open.spotify.com/intl-es/artist/4X9Zf19U8GscfJ85Xf4YjZ" target="_blank">Spotify</a>
         <a href="https://on.soundcloud.com/yntIGIY9C8KfnA6DqP" target="_blank">SoundCloud</a>
         <a href="https://www.instagram.com/thedjslett" target="_blank">Instagram</a>
         <a href="https://youtube.com/@thedjslett" target="_blank">YouTube</a>
@@ -203,9 +187,7 @@
 <div id="music" class="tab">
     <div class="card">
         <h2>Discografía Oficial</h2>
-        <div style="border-radius:12px; overflow:hidden;">
-            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/TU_ID_AQUI?utm_source=generator&theme=03" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/4X9Zf19U8GscfJ85Xf4YjZ?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         
         <div style="margin-top: 40px; background: #000; padding: 25px; border-radius: 12px; border: 1px solid #222;">
             <p style="margin-bottom: 15px; font-weight: bold; color: var(--neon-lime); text-transform: uppercase; font-size: 0.8rem;">
@@ -228,18 +210,18 @@
 <div id="bio" class="tab">
     <div class="card">
         <h2>Biografía</h2>
-        <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem; margin-bottom: 20px;">
-            TheDJSlett es un DJ y productor colombiano de Hardstyle y Rawstyle, originario de Envigado. 
-            Su trayectoria está marcada por su paso por <strong>La Cantera</strong>, donde consolidó sus bases musicales antes de evolucionar hacia los sonidos más potentes del Harddance actual.
-        </p>
         <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem;">
-            Actualmente integra su conocimiento técnico como estudiante de <strong>Ingeniería Electrónica en la Institución Universitaria de Envigado (IUE)</strong>, aplicando conceptos de procesamiento de señales y hardware en su diseño sonoro.
+            TheDJSlett es un DJ y productor colombiano de Hardstyle y Rawstyle, originario de Envigado. 
+            Su carrera despegó como parte de <strong>La Cantera Studios</strong>, el prestigioso programa de Bull Nene para el desarrollo de nuevos talentos.
+        </p>
+        <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem; margin-top: 15px;">
+            Actualmente fusiona su visión artística con su formación técnica como estudiante de <strong>Ingeniería Electrónica en la Institución Universitaria de Envigado (IUE)</strong>, aplicando conceptos de procesamiento de señales a su diseño sonoro.
         </p>
         
         <h2 style="margin-top: 50px;">Technical Rider</h2>
         <ul class="rider-list">
-            <li>2x Pioneer CDJ-2000 NXS2 o superior</li>
-            <li>1x Pioneer DJM-900 NXS2</li>
+            <li>2x Pioneer CDJ-2000 NXS2 o superior (Linkeados)</li>
+            <li>1x Pioneer DJM-900 NXS2 / DJM-V10</li>
             <li>Monitoreo: 2 monitores activos con control independiente</li>
         </ul>
     </div>
@@ -256,7 +238,6 @@
 <div id="play" class="tab">
     <div class="card" style="text-align: center;">
         <h2>Catch the Kick</h2>
-        <p>Haz clic en el nodo para aumentar la frecuencia.</p>
         <canvas id="gameCanvas" width="400" height="300"></canvas>
     </div>
 </div>
@@ -288,18 +269,18 @@ document.addEventListener("DOMContentLoaded", function() {
     const sfxDrop = document.getElementById("sfxDrop");
     document.getElementById("dropBtn").addEventListener("click", () => {
         sfxDrop.currentTime = 0;
-        sfxDrop.play().catch(e => console.log("Audio no cargado"));
+        sfxDrop.play().catch(e => console.log("Carga drop.mp3 en el repo"));
     });
 
-    let gameRunning = false;
+    let gameActive = false;
     function initGame() {
-        if(gameRunning) return;
-        gameRunning = true;
+        if(gameActive) return;
+        gameActive = true;
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
-        let x = 200, y = 150, dx = 3, dy = 3;
+        let x = 200, y = 150, dx = 4, dy = 4;
 
-        canvas.onclick = (e) => {
+        canvas.onmousedown = (e) => {
             const rect = canvas.getBoundingClientRect();
             const mx = e.clientX - rect.left;
             const my = e.clientY - rect.top;
@@ -313,7 +294,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if(!document.getElementById("play").classList.contains("active")) {
                 requestAnimationFrame(loop); return;
             }
-            ctx.fillStyle = "rgba(0,0,0,0.25)";
+            ctx.fillStyle = "rgba(0,0,0,0.2)";
             ctx.fillRect(0,0,400,300);
             x += dx; y += dy;
             if(x < 15 || x > 385) dx *= -1;
@@ -329,6 +310,5 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
-
 </body>
 </html>
