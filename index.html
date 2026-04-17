@@ -75,11 +75,7 @@
             transition: 0.3s;
             font-weight: bold;
         }
-        .social-links a:hover {
-            background: var(--neon-lime);
-            color: black;
-            box-shadow: 0 0 15px var(--neon-lime);
-        }
+        .social-links a:hover { background: var(--neon-lime); color: black; box-shadow: 0 0 15px var(--neon-lime); }
 
         /* NAVIGATION */
         nav {
@@ -107,12 +103,9 @@
             font-size: 0.85rem;
         }
         nav button:hover { color: var(--neon-lime); }
-        nav button.active-btn {
-            color: var(--neon-lime);
-            border-bottom: 2px solid var(--neon-lime);
-        }
+        nav button.active-btn { color: var(--neon-lime); border-bottom: 2px solid var(--neon-lime); }
 
-        /* TABS LOGIC */
+        /* TABS */
         .tab {
             display: none;
             padding: 50px 20px;
@@ -133,7 +126,6 @@
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
-        /* RIDER LIST */
         .rider-list { list-style: none; padding: 0; }
         .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); font-size: 0.95rem; }
         .rider-list li::before { content: '⚡'; position: absolute; left: 0; color: var(--neon-lime); }
@@ -163,7 +155,6 @@
             box-shadow: 0 0 30px rgba(50, 255, 0, 0.3);
             transition: 0.3s;
         }
-        #dropBtn:hover { box-shadow: 0 0 50px rgba(50, 255, 0, 0.5); transform: scale(1.05); }
 
         footer { 
             padding: 60px 40px; 
@@ -171,7 +162,6 @@
             font-size: 0.75rem; 
             border-top: 1px solid #111;
             letter-spacing: 1px;
-            line-height: 1.6;
         }
         .status-on { color: var(--terminal-green); font-weight: bold; }
     </style>
@@ -238,16 +228,19 @@
 <div id="bio" class="tab">
     <div class="card">
         <h2>Biografía</h2>
+        <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem; margin-bottom: 20px;">
+            TheDJSlett es un DJ y productor colombiano de Hardstyle y Rawstyle, originario de Envigado. 
+            Su trayectoria está marcada por su paso por <strong>La Cantera</strong>, donde consolidó sus bases musicales antes de evolucionar hacia los sonidos más potentes del Harddance actual.
+        </p>
         <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem;">
-            TheDJSlett es un DJ y productor colombiano de Hardstyle, Rawstyle y Hardcore, originario de Envigado. 
-            Actualmente combina su carrera musical con sus estudios de <strong>Ingeniería Electrónica en la Institución Universitaria de Envigado (IUE)</strong>.
+            Actualmente integra su conocimiento técnico como estudiante de <strong>Ingeniería Electrónica en la Institución Universitaria de Envigado (IUE)</strong>, aplicando conceptos de procesamiento de señales y hardware en su diseño sonoro.
         </p>
         
         <h2 style="margin-top: 50px;">Technical Rider</h2>
         <ul class="rider-list">
             <li>2x Pioneer CDJ-2000 NXS2 o superior</li>
             <li>1x Pioneer DJM-900 NXS2</li>
-            <li>Monitoreo: 2 monitores de cabina activos</li>
+            <li>Monitoreo: 2 monitores activos con control independiente</li>
         </ul>
     </div>
 </div>
