@@ -127,6 +127,7 @@
             margin: 20px auto; 
             max-width: 100%;
             border-radius: 12px;
+            cursor: crosshair;
         }
 
         #dropBtn {
@@ -150,6 +151,15 @@
             border-top: 1px solid #111;
         }
         .status-on { color: var(--terminal-green); font-weight: bold; }
+        
+        /* Estilo para el Score */
+        #scoreContainer {
+            margin-bottom: 15px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.5rem;
+            color: var(--neon-lime);
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -249,6 +259,8 @@
 <div id="play" class="tab">
     <div class="card" style="text-align: center;">
         <h2>Catch the Kick</h2>
+        <div id="scoreContainer">SCORE: <span id="gameScore">000</span></div>
+        <p>Haz clic en el nodo para aumentar la frecuencia del drop.</p>
         <canvas id="gameCanvas" width="400" height="300"></canvas>
     </div>
 </div>
@@ -284,20 +296,34 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     let gameActive = false;
+    let score = 0;
+
     function initGame() {
         if(gameActive) return;
         gameActive = true;
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
+        const scoreDisplay = document.getElementById("gameScore");
         let x = 200, y = 150, dx = 4, dy = 4;
 
         canvas.onmousedown = (e) => {
             const rect = canvas.getBoundingClientRect();
             const mx = e.clientX - rect.left;
             const my = e.clientY - rect.top;
+            
+            // Detección de colisión
             if (Math.sqrt((mx-x)**2 + (my-y)**2) < 25) {
-                sfxDrop.currentTime = 0; sfxDrop.play();
-                dx *= -1.15; dy *= 1.15; 
+                sfxDrop.currentTime = 0; 
+                sfxDrop.play();
+
+                // Sistema de puntuación
+                score += 10;
+                scoreDisplay.innerText = score.toString().padStart(3, '0');
+
+                // Aumento de velocidad con límites profesionales (Fix de ChatGPT)
+                let speedFactor = 1.15;
+                dx = Math.max(Math.min(dx * -speedFactor, 12), -12);
+                dy = Math.max(Math.min(dy * speedFactor, 12), -12);
             }
         };
 
@@ -305,16 +331,22 @@ document.addEventListener("DOMContentLoaded", function() {
             if(!document.getElementById("play").classList.contains("active")) {
                 requestAnimationFrame(loop); return;
             }
-            ctx.fillStyle = "rgba(0,0,0,0.2)";
+            ctx.fillStyle = "rgba(0,0,0,0.25)";
             ctx.fillRect(0,0,400,300);
+            
             x += dx; y += dy;
+            
             if(x < 15 || x > 385) dx *= -1;
             if(y < 15 || y > 285) dy *= -1;
+            
             ctx.beginPath();
             ctx.arc(x, y, 15, 0, Math.PI*2);
             ctx.fillStyle = "#32ff00";
-            ctx.shadowBlur = 20; ctx.shadowColor = "#32ff00";
+            ctx.shadowBlur = 20; 
+            ctx.shadowColor = "#32ff00";
             ctx.fill();
+            ctx.shadowBlur = 0;
+            
             requestAnimationFrame(loop);
         }
         loop();
