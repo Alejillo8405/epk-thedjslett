@@ -133,15 +133,6 @@
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
-        /* SPOTIFY BOX */
-        .spotify-box {
-            border-radius: 12px;
-            overflow: hidden;
-            background: #000;
-            border: 1px solid #333;
-            line-height: 0;
-        }
-
         /* RIDER LIST */
         .rider-list { list-style: none; padding: 0; }
         .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); font-size: 0.95rem; }
@@ -174,7 +165,6 @@
         }
         #dropBtn:hover { box-shadow: 0 0 50px rgba(50, 255, 0, 0.5); transform: scale(1.05); }
 
-        /* FOOTER */
         footer { 
             padding: 60px 40px; 
             color: #333; 
@@ -196,7 +186,7 @@
     <button class="btn-download" onclick="window.print()">📥 Download EPK (PDF)</button>
 
     <div class="social-links">
-        <a href="https://open.spotify.com/artist/2PZzM66UfUe8P8M8I1x8yO" target="_blank">Spotify</a>
+        <a href="https://open.spotify.com/embed/track/TU_ID_AQUI?utm_source=generator&theme=02" target="_blank">Spotify</a>
         <a href="https://on.soundcloud.com/yntIGIY9C8KfnA6DqP" target="_blank">SoundCloud</a>
         <a href="https://www.instagram.com/thedjslett" target="_blank">Instagram</a>
         <a href="https://youtube.com/@thedjslett" target="_blank">YouTube</a>
@@ -222,18 +212,9 @@
 
 <div id="music" class="tab">
     <div class="card">
-        <h2>Discografía en Spotify</h2>
-        <div class="spotify-box">
-            <iframe 
-                style="border-radius:12px" 
-                src="https://open.spotify.com/embed/artist/2PZzM66UfUe8P8M8I1x8yO?utm_source=generator&theme=0" 
-                width="100%" 
-                height="352" 
-                frameBorder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-            </iframe>
+        <h2>Discografía Oficial</h2>
+        <div style="border-radius:12px; overflow:hidden;">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/TU_ID_AQUI?utm_source=generator&theme=03" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </div>
         
         <div style="margin-top: 40px; background: #000; padding: 25px; border-radius: 12px; border: 1px solid #222;">
@@ -296,7 +277,6 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // --- NAVEGACIÓN ---
     const buttons = document.querySelectorAll("nav button");
     const tabs = document.querySelectorAll(".tab");
 
@@ -312,14 +292,12 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // --- EFECTO DROP ---
     const sfxDrop = document.getElementById("sfxDrop");
     document.getElementById("dropBtn").addEventListener("click", () => {
         sfxDrop.currentTime = 0;
-        sfxDrop.play().catch(e => console.log("Carga drop.mp3 para audio"));
+        sfxDrop.play().catch(e => console.log("Audio no cargado"));
     });
 
-    // --- JUEGO ---
     let gameRunning = false;
     function initGame() {
         if(gameRunning) return;
