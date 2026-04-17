@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheDJSlett | Official EPK</title>
-    <meta name="description" content="TheDJSlett - Hardstyle DJ & Producer from Medellín.">
     <link rel="icon" href="logo.webp" type="image/webp">
     <style>
         :root {
@@ -38,6 +37,7 @@
             border-radius: 50%;
             border: 2px solid var(--neon-lime);
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
         
         .hero h1 { font-size: 3.5rem; margin: 15px 0 5px 0; text-transform: uppercase; letter-spacing: 4px; }
@@ -74,6 +74,26 @@
             font-weight: bold;
         }
         .social-links a:hover { background: var(--neon-lime); color: black; }
+
+        /* WhatsApp Flotante */
+        .wpp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            z-index: 2000;
+            text-decoration: none;
+            transition: 0.3s;
+        }
 
         nav {
             background: rgba(0,0,0,0.95);
@@ -115,9 +135,12 @@
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
-        footer { padding: 60px 40px; color: #333; font-size: 0.75rem; border-top: 1px solid #111; }
+        /* RIDER & BIO */
+        .rider-list { list-style: none; padding: 0; }
+        .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); }
+        .rider-list li::before { content: '⚡'; position: absolute; left: 0; color: var(--neon-lime); }
 
-        /* Estilo para el formulario de Formspree */
+        /* FORMULARIO */
         .contact-form { display: flex; flex-direction: column; gap: 20px; }
         .form-group { display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-size: 0.8rem; text-transform: uppercase; color: var(--neon-lime); font-weight: bold; }
@@ -140,9 +163,34 @@
             border-radius: 5px;
             transition: 0.3s;
         }
+        .btn-send:hover { box-shadow: 0 0 20px var(--neon-lime); letter-spacing: 1px; }
+
+        /* JUEGO */
+        #gameCanvas { background: #000; border: 2px solid var(--neon-lime); display: block; margin: 20px auto; max-width: 100%; border-radius: 12px; }
+        #scoreContainer { margin-bottom: 15px; font-family: monospace; font-size: 1.5rem; color: var(--neon-lime); }
+        #dropBtn {
+            display: block;
+            margin: 30px auto;
+            background: transparent;
+            color: var(--neon-lime);
+            padding: 18px 45px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            border-radius: 8px;
+            cursor: pointer;
+            border: 2px solid var(--neon-lime);
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        footer { padding: 60px 40px; color: #333; font-size: 0.75rem; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
+
+<a href="https://wa.me/573194465702?text=Hola%20quiero%20informacion%20para%20booking%20de%20TheDJSlett" class="wpp-float" target="_blank">
+    <svg width="35" height="35" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
 
 <div class="hero">
     <img src="logo.webp" alt="TheDJSlett Logo"> 
@@ -150,7 +198,7 @@
     <p>HARDSTYLE DJ / PRODUCER</p>
     <button onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking">INICIAR BOOKING</button>
     <div class="social-links">
-        <a href="https://open.spotify.com/artist/4X9Zf119U8GscfJ85Xf4yz" target="_blank">Spotify</a>
+        <a href="https://open.spotify.com/intl-es/artist/4X9Zf119U8GscfJ85Xf4yz" target="_blank">Spotify</a>
         <a href="https://www.instagram.com/thedjslett" target="_blank">Instagram</a>
         <a href="https://youtube.com/@thedjslett" target="_blank">YouTube</a>
     </div>
@@ -159,46 +207,66 @@
 <nav id="navbar">
     <button data-tab="home" class="active-btn">Inicio</button>
     <button data-tab="music">Música</button>
+    <button data-tab="media">Media</button>
+    <button data-tab="bio">Bio & Rider</button>
     <button data-tab="contact">Contacto</button>
+    <button data-tab="play">Playground</button>
 </nav>
 
 <div id="home" class="tab active">
-    <div class="card">
-        <h2>Bienvenido</h2>
-        <p style="color: var(--text-gray);">Explora mi discografía y solicita información para eventos.</p>
+    <div class="card" style="text-align: center;">
+        <h2>System Check</h2>
+        <p style="color: var(--text-gray);">Carga los sistemas de audio para el próximo Drop.</p>
+        <button id="dropBtn">DISPARAR KICK</button>
     </div>
 </div>
 
 <div id="music" class="tab">
     <div class="card">
         <h2>Discografía Oficial</h2>
-        <iframe 
-            style="border-radius:12px" 
-            src="https://open.spotify.com/embed/artist/4X9Zf119U8GscfJ85Xf4yz?utm_source=generator&theme=0" 
-            width="100%" 
-            height="352" 
-            frameBorder="0" 
-            allowfullscreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
-        </iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/4X9Zf119U8GscfJ85Xf4yz?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+</div>
+
+<div id="media" class="tab">
+    <div class="card">
+        <h2>Visuals & Live Performances</h2>
+        <iframe width="100%" height="450" src="https://www.youtube.com/embed/cX31J616-Tc" frameborder="0" allowfullscreen style="border-radius: 12px; border: 1px solid #333;"></iframe>
+    </div>
+</div>
+
+<div id="bio" class="tab">
+    <div class="card">
+        <h2>The Artist</h2>
+        <p style="line-height: 1.8; color: var(--text-gray); font-style: italic; border-left: 2px solid var(--neon-lime); padding-left: 15px;">
+            "Sets diseñados para pista, energía sin concesiones y enfoque directo a festivales."
+        </p>
+        <p style="line-height: 1.8; color: var(--text-gray); margin-top: 20px;">
+            Originario de Envigado, TheDJSlett fusiona su formación como Ingeniero Electrónico en la IUE con la potencia del Harddance. Miembro de La Cantera Studios, su enfoque técnico garantiza una calidad sonora superior en cada drop.
+        </p>
+        <h2 style="margin-top: 40px;">Technical Rider</h2>
+        <ul class="rider-list">
+            <li>2x Pioneer CDJ-2000 NXS2 o superior</li>
+            <li>1x Pioneer DJM-900 NXS2 / DJM-V10</li>
+            <li>Monitoreo: 2 monitores activos de alta potencia</li>
+        </ul>
     </div>
 </div>
 
 <div id="contact" class="tab">
     <div class="card">
         <h2>Booking & Inquiry</h2>
-        <form class="contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
+        <form class="contact-form" action="https://formspree.io/f/mqaebrda" method="POST">
             <div class="form-group">
                 <label>Nombre / Promotora</label>
                 <input type="text" name="name" required>
             </div>
             <div class="form-group">
-                <label>Correo Electrónico</label>
+                <label>Tu Correo Electrónico</label>
                 <input type="email" name="email" required>
             </div>
             <div class="form-group">
-                <label>Mensaje</label>
+                <label>Mensaje / Detalles del Evento</label>
                 <textarea name="message" rows="5" required></textarea>
             </div>
             <button type="submit" class="btn-send">ENVIAR SOLICITUD</button>
@@ -206,13 +274,25 @@
     </div>
 </div>
 
+<div id="play" class="tab">
+    <div class="card" style="text-align: center;">
+        <h2>Catch the Kick</h2>
+        <div id="scoreContainer">SCORE: <span id="gameScore">000</span></div>
+        <canvas id="gameCanvas" width="400" height="300"></canvas>
+    </div>
+</div>
+
 <footer>
-    © 2026 TheDJSlett. Medellín, CO.
+    © 2026 TheDJSlett. <span style="color: var(--terminal-green);">SYSTEM_READY</span> | Medellín, CO.
 </footer>
 
+<audio id="sfxDrop"><source src="drop.mp3" type="audio/mpeg"></audio>
+
 <script>
+document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.querySelectorAll("nav button");
     const tabs = document.querySelectorAll(".tab");
+    const sfxDrop = document.getElementById("sfxDrop");
 
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
@@ -221,10 +301,59 @@
             buttons.forEach(b => b.classList.remove("active-btn"));
             document.getElementById(target).classList.add("active");
             btn.classList.add("active-btn");
+            if(target === 'play') initGame();
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
     });
-</script>
 
+    document.getElementById("dropBtn").addEventListener("click", () => {
+        sfxDrop.currentTime = 0;
+        sfxDrop.play().catch(e => console.log("Audio blocked"));
+    });
+
+    let gameActive = false;
+    let score = 0;
+
+    function initGame() {
+        if(gameActive) return;
+        gameActive = true;
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        const scoreDisplay = document.getElementById("gameScore");
+        let x = 200, y = 150, dx = 4, dy = 4;
+
+        canvas.onmousedown = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+            if (Math.sqrt((mx-x)**2 + (my-y)**2) < 25) {
+                sfxDrop.currentTime = 0; sfxDrop.play();
+                score += 10;
+                scoreDisplay.innerText = score.toString().padStart(3, '0');
+                let speedFactor = 1.15;
+                dx = Math.max(Math.min(dx * -speedFactor, 12), -12);
+                dy = Math.max(Math.min(dy * speedFactor, 12), -12);
+            }
+        };
+
+        function loop() {
+            if(!document.getElementById("play").classList.contains("active")) {
+                requestAnimationFrame(loop); return;
+            }
+            ctx.fillStyle = "rgba(0,0,0,0.25)";
+            ctx.fillRect(0,0,400,300);
+            x += dx; y += dy;
+            if(x < 15 || x > 385) dx *= -1;
+            if(y < 15 || y > 285) dy *= -1;
+            ctx.beginPath();
+            ctx.arc(x, y, 15, 0, Math.PI*2);
+            ctx.fillStyle = "#32ff00";
+            ctx.fill();
+            requestAnimationFrame(loop);
+        }
+        loop();
+    }
+});
+</script>
 </body>
 </html>
