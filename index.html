@@ -13,6 +13,7 @@
             --card-bg: #111111;
             --text-gray: #cccccc;
             --terminal-green: #1aed02;
+            --input-bg: #1a1a1a;
         }
 
         body {
@@ -43,7 +44,6 @@
         .hero h1 { font-size: 3.5rem; margin: 15px 0 5px 0; text-transform: uppercase; letter-spacing: 4px; }
         .hero p { color: var(--neon-lime); font-weight: bold; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 25px; }
 
-        /* Botón de Booking Mejorado (Directo al correo) */
         .btn-booking {
             display: inline-block;
             background: var(--neon-lime);
@@ -57,27 +57,14 @@
             transition: 0.3s;
             letter-spacing: 1px;
             font-size: 0.9rem;
-            box-shadow: 0 0 15px rgba(50, 255, 0, 0.3);
+            cursor: pointer;
+            border: none;
         }
-        .btn-booking:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px var(--neon-lime);
-        }
+        .btn-booking:hover { transform: scale(1.05); box-shadow: 0 0 25px var(--neon-lime); }
 
-        /* Prueba Social (Placeholder para cuando tengas stats) */
-        .social-proof {
-            color: var(--text-gray);
-            font-size: 0.8rem;
-            margin-bottom: 30px;
-            display: block;
-        }
+        .social-proof { color: var(--text-gray); font-size: 0.8rem; margin-bottom: 30px; display: block; }
 
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+        .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
         .social-links a {
             color: var(--neon-lime);
             text-decoration: none;
@@ -89,12 +76,8 @@
             transition: 0.3s;
             font-weight: bold;
         }
-        .social-links a:hover {
-            background: var(--neon-lime);
-            color: black;
-        }
+        .social-links a:hover { background: var(--neon-lime); color: black; }
 
-        /* WhatsApp Flotante con Mensaje Intencional */
         .wpp-float {
             position: fixed;
             bottom: 20px;
@@ -113,9 +96,7 @@
             text-decoration: none;
             transition: 0.3s;
         }
-        .wpp-float:hover { transform: scale(1.1); }
 
-        /* NAVIGATION */
         nav {
             background: rgba(0,0,0,0.95);
             padding: 10px;
@@ -126,7 +107,6 @@
             display: flex;
             justify-content: center;
             backdrop-filter: blur(15px);
-            flex-wrap: wrap;
         }
         nav button {
             margin: 5px;
@@ -138,15 +118,10 @@
             text-transform: uppercase;
             border: none;
             transition: 0.3s;
-            font-size: 0.85rem;
         }
-        nav button.active-btn {
-            color: var(--neon-lime);
-            border-bottom: 2px solid var(--neon-lime);
-        }
+        nav button.active-btn { color: var(--neon-lime); border-bottom: 2px solid var(--neon-lime); }
 
-        /* TABS */
-        .tab { display: none; padding: 50px 20px; max-width: 1000px; margin: 0 auto; animation: slideUp 0.5s ease-out; }
+        .tab { display: none; padding: 50px 20px; max-width: 800px; margin: 0 auto; animation: slideUp 0.5s ease-out; }
         .active { display: block; }
         @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -156,11 +131,41 @@
             border-radius: 15px;
             border: 1px solid #222;
             text-align: left;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
         }
         .card h2 { color: var(--neon-lime); text-transform: uppercase; border-left: 4px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px; }
 
-        /* Estética Corregida del Botón Kick */
+        /* FORMULARIO ESTILO AGENCIA */
+        .contact-form { display: flex; flex-direction: column; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-size: 0.8rem; text-transform: uppercase; color: var(--neon-lime); font-weight: bold; letter-spacing: 1px; }
+        
+        .form-group input, .form-group textarea {
+            background: var(--input-bg);
+            border: 1px solid #333;
+            padding: 15px;
+            color: white;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--neon-lime);
+            box-shadow: 0 0 10px rgba(50, 255, 0, 0.1);
+        }
+        .btn-send {
+            background: var(--neon-lime);
+            color: black;
+            border: none;
+            padding: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        .btn-send:hover { letter-spacing: 2px; box-shadow: 0 0 20px var(--neon-lime); }
+
         #dropBtn {
             display: block;
             margin: 30px auto;
@@ -175,23 +180,12 @@
             text-transform: uppercase;
             transition: 0.3s;
         }
-        #dropBtn:hover {
-            background: var(--neon-lime);
-            color: black;
-            box-shadow: 0 0 30px var(--neon-lime);
-        }
-        #dropBtn:active { transform: scale(0.95); }
+        #dropBtn:hover { background: var(--neon-lime); color: black; }
 
-        /* Estilos Juego */
-        #gameCanvas { background: #000; border: 2px solid var(--neon-lime); display: block; margin: 20px auto; max-width: 100%; border-radius: 12px; cursor: crosshair; }
-        #scoreContainer { margin-bottom: 15px; font-family: monospace; font-size: 1.5rem; color: var(--neon-lime); font-weight: bold; }
-
-        .rider-list { list-style: none; padding: 0; }
-        .rider-list li { margin-bottom: 12px; padding-left: 30px; position: relative; color: var(--text-gray); }
-        .rider-list li::before { content: '⚡'; position: absolute; left: 0; color: var(--neon-lime); }
+        #gameCanvas { background: #000; border: 2px solid var(--neon-lime); display: block; margin: 20px auto; max-width: 100%; border-radius: 12px; }
+        #scoreContainer { margin-bottom: 15px; font-family: monospace; font-size: 1.5rem; color: var(--neon-lime); }
 
         footer { padding: 60px 40px; color: #333; font-size: 0.75rem; border-top: 1px solid #111; }
-        .status-on { color: var(--terminal-green); font-weight: bold; }
     </style>
 </head>
 <body>
@@ -205,22 +199,21 @@
     <h1>TheDJSlett</h1>
     <p>HARDSTYLE DJ / PRODUCER</p>
     
-    <a href="mailto:contact.slett@gmail.com?subject=Booking%20TheDJSlett" class="btn-booking">BOOKING / CONTACTO</a>
+    <button onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking">INICIAR BOOKING</button>
     
     <span class="social-proof">Apoyo en la escena Hardstyle 🇨🇴</span>
     
     <div class="social-links">
-        <a href="https://open.spotify.com/embed/artist/2PZzM66UfUe8P8M8I1x8yO?utm_source=generator&theme=05" target="_blank">Spotify</a>
-        <a href="https://on.soundcloud.com/yntIGIY9C8KfnA6DqP" target="_blank">SoundCloud</a>
-        <a href="https://www.instagram.com/thedjslett" target="_blank">Instagram</a>
-        <a href="https://youtube.com/@thedjslett" target="_blank">YouTube</a>
+        <a href="#" target="_blank">Spotify</a>
+        <a href="#" target="_blank">SoundCloud</a>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">YouTube</a>
     </div>
 </div>
 
 <nav id="navbar">
     <button data-tab="home" class="active-btn">Inicio</button>
     <button data-tab="music">Música</button>
-    <button data-tab="media">Media</button>
     <button data-tab="bio">Bio & Rider</button>
     <button data-tab="contact">Contacto</button>
     <button data-tab="play">Playground</button>
@@ -237,34 +230,39 @@
 <div id="music" class="tab">
     <div class="card">
         <h2>Discografía Oficial</h2>
-        <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/2dsFFDlP0HN09zODqQqfem?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+        <p style="color: var(--text-gray);">Escucha los últimos lanzamientos y producciones.</p>
+        </div>
 </div>
 
 <div id="bio" class="tab">
     <div class="card">
         <h2>The Artist</h2>
-        <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem; font-style: italic; border-left: 2px solid var(--neon-lime); padding-left: 15px; margin-bottom: 25px;">
-            "Sets diseñados para pista, energía sin concesiones y enfoque directo a festivales."
+        <p style="line-height: 1.8; color: var(--text-gray);">
+            TheDJSlett es un DJ y productor colombiano de Hardstyle y Rawstyle. Como estudiante de Ingeniería Electrónica en la IUE, fusiona el rigor técnico con el diseño sonoro de alto impacto.
         </p>
-        <p style="line-height: 1.8; color: var(--text-gray); font-size: 1.1rem;">
-            TheDJSlett es un DJ y productor colombiano de Hardstyle y Rawstyle, originario de Envigado. Su carrera despegó como parte de <strong>La Cantera Studios</strong>. Actualmente fusiona su visión artística con su formación técnica como estudiante de <strong>Ingeniería Electrónica en la Institución Universitaria de Envigado (IUE)</strong>, aplicando conceptos de procesamiento de señales a su diseño sonoro.
-        </p>
-        
-        <h2 style="margin-top: 50px;">Technical Rider</h2>
-        <ul class="rider-list">
-            <li>2x Pioneer CDJ-2000 NXS2 o superior (Linkeados)</li>
-            <li>1x Pioneer DJM-900 NXS2 / DJM-V10</li>
-            <li>Monitoreo: 2 monitores activos con control independiente</li>
-        </ul>
     </div>
 </div>
 
 <div id="contact" class="tab">
     <div class="card">
-        <h2>Booking & Management</h2>
-        <p style="font-size: 1.8rem; color: var(--neon-lime); font-weight: 900; margin: 25px 0;">contact.slett@gmail.com</p>
-        <p style="color: var(--text-gray);">Medellín, Colombia 🇨🇴</p>
+        <h2>Booking & Inquiry</h2>
+        <p style="margin-bottom: 30px; color: var(--text-gray);">Completa el formulario para solicitar una fecha o servicios de producción.</p>
+        
+        <form class="contact-form" action="https://formspree.io/f/mqewqywp" method="POST">
+            <div class="form-group">
+                <label>Nombre / Promotora</label>
+                <input type="text" name="name" placeholder="Ej: Agency Name" required>
+            </div>
+            <div class="form-group">
+                <label>Tu Correo Electrónico</label>
+                <input type="email" name="email" placeholder="nombre@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+                <label>Mensaje / Detalles del Evento</label>
+                <textarea name="message" rows="5" placeholder="Cuéntame sobre el evento o proyecto..." required></textarea>
+            </div>
+            <button type="submit" class="btn-send">ENVIAR SOLICITUD</button>
+        </form>
     </div>
 </div>
 
@@ -277,7 +275,7 @@
 </div>
 
 <footer>
-    © 2026 TheDJSlett. <span class="status-on">SYSTEM_READY</span> | Medellín, CO.
+    © 2026 TheDJSlett. <span style="color: var(--terminal-green);">SYSTEM_READY</span> | Medellín, CO.
 </footer>
 
 <audio id="sfxDrop"><source src="drop.mp3" type="audio/mpeg"></audio>
@@ -302,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("dropBtn").addEventListener("click", () => {
         sfxDrop.currentTime = 0;
-        sfxDrop.play().catch(e => console.log("Audio check"));
+        sfxDrop.play();
     });
 
     let gameActive = false;
@@ -324,16 +322,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 sfxDrop.currentTime = 0; sfxDrop.play();
                 score += 10;
                 scoreDisplay.innerText = score.toString().padStart(3, '0');
-                
-                // Mensaje épico a los 100 puntos
-                if(score === 100) {
-                    alert("🔥 HARDSTYLE ACTIVATED 🔥");
-                }
-
-                // Fix de velocidad Pro (límites para sensación pulida)
-                let speedFactor = 1.15;
-                dx = Math.max(Math.min(dx * -speedFactor, 8), -8);
-                dy = Math.max(Math.min(dy * speedFactor, 8), -8);
+                dx = Math.max(Math.min(dx * -1.15, 8), -8);
+                dy = Math.max(Math.min(dy * 1.15, 8), -8);
             }
         };
 
@@ -349,7 +339,6 @@ document.addEventListener("DOMContentLoaded", function() {
             ctx.beginPath();
             ctx.arc(x, y, 15, 0, Math.PI*2);
             ctx.fillStyle = "#32ff00";
-            ctx.shadowBlur = 20; ctx.shadowColor = "#32ff00";
             ctx.fill();
             requestAnimationFrame(loop);
         }
