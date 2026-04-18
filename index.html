@@ -348,10 +348,19 @@ document.addEventListener("DOMContentLoaded", function() {
             const rect = canvas.getBoundingClientRect();
             const mx = e.clientX - rect.left;
             const my = e.clientY - rect.top;
+            
             if (Math.sqrt((mx-x)**2 + (my-y)**2) < 25) {
-                sfxDrop.currentTime = 0; sfxDrop.play();
+                sfxDrop.currentTime = 0; 
+                sfxDrop.play();
                 score += 10;
                 scoreDisplay.innerText = score.toString().padStart(3, '0');
+                
+                // --- AQUÍ ESTÁ LO QUE SE PERDIÓ: EL MENSAJE DE VICTORIA ---
+                if(score === 50) {
+                    alert("🔥 ¡NIVEL HARDSTYLE ALCANZADO! Eres un Pro 🔥");
+                }
+                // ---------------------------------------------------------
+
                 let speedFactor = 1.15;
                 dx = Math.max(Math.min(dx * -speedFactor, 12), -12);
                 dy = Math.max(Math.min(dy * speedFactor, 12), -12);
