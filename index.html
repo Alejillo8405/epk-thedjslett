@@ -15,12 +15,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="TheDJSlett | Hardstyle DJ & Producer Medellín">
     <meta property="og:description" content="DJ y Productor de Hardstyle en Medellín. Escucha mi discografía, descarga mi Rider Técnico y gestiona bookings oficiales.">
-    <meta property="og:image" content="https://alejillo8405.github.io/epk-thedjslett/logo.webp">
+    <meta property="og:image" content="https://alejillo8405.github.io/epk-thedjslett/og-image.jpg">
     <meta property="og:url" content="https://alejillo8405.github.io/epk-thedjslett/">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TheDJSlett | Hardstyle DJ & Producer Medellín">
     <meta name="twitter:description" content="DJ y Productor de Hardstyle en Medellín. Escucha mi discografía, descarga mi Rider Técnico y gestiona bookings oficiales.">
-    <meta name="twitter:image" content="https://alejillo8405.github.io/epk-thedjslett/logo.webp">
+    <meta name="twitter:image" content="https://alejillo8405.github.io/epk-thedjslett/og-image.jpg">
     <meta name="theme-color" content="#050505">
     <link rel="canonical" href="https://alejillo8405.github.io/epk-thedjslett/">
 
@@ -41,7 +41,7 @@
         "name": "TheDJSlett",
         "genre": "Hardstyle",
         "url": "https://alejillo8405.github.io/epk-thedjslett/",
-        "image": "https://alejillo8405.github.io/epk-thedjslett/logo.webp",
+        "image": "https://alejillo8405.github.io/epk-thedjslett/og-image.jpg",
         "sameAs": [
             "https://open.spotify.com/intl-es/artist/2dsFFDlP0HN09zODqQqfem",
             "https://www.instagram.com/thedjslett",
@@ -176,6 +176,23 @@
             font-size: 0.8rem;
             text-transform: uppercase;
             white-space: nowrap;
+        }
+
+        .home-card {
+            position: relative;
+            background-image: linear-gradient(rgba(5,5,5,0.88), rgba(5,5,5,0.93)), url('press-energia-bg.jpg');
+            background-size: cover;
+            background-position: center 20%;
+        }
+
+        .press-photo {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 12px;
+            border: 1px solid var(--neon-lime);
+            box-shadow: 0 0 25px rgba(50,255,0,0.25);
+            display: block;
+            margin: 0 auto 25px auto;
         }
 
         /* WhatsApp Flotante */
@@ -326,7 +343,7 @@
 </nav>
 
 <div id="home" class="tab active">
-    <div class="card" style="text-align: center;">
+    <div class="card home-card" style="text-align: center;">
         <h2 data-i18n="home.title">System Check</h2>
         <p style="color: var(--text-gray);" data-i18n="home.desc">Carga los sistemas de audio para el próximo Drop.</p>
         <button id="dropBtn" data-i18n="home.dropBtn">DISPARAR KICK</button>
@@ -364,6 +381,7 @@
 <div id="bio" class="tab">
     <div class="card">
         <h2>The Artist</h2>
+        <img src="press-mood.jpg" alt="TheDJSlett en cabina" class="press-photo">
         <p style="line-height: 1.8; color: var(--text-gray); font-style: italic; border-left: 2px solid var(--neon-lime); padding-left: 15px;" data-i18n="bio.quote">
             "Sets diseñados para pista, energía sin concesiones y enfoque directo a festivales."
         </p>
