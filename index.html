@@ -7,6 +7,17 @@
     <meta name="description" content="TheDJSlett: DJ y Productor de Hardstyle en Medellín. Escucha mi discografía, descarga mi Rider Técnico y gestiona bookings oficiales.">
     <meta name="keywords" content="TheDJSlett, Hardstyle Medellín, DJ Hardstyle Colombia, Productor Harddance, EPK DJ">
     <link rel="icon" href="logo.webp" type="image/webp">
+
+    <!-- Open Graph / redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TheDJSlett | Hardstyle DJ & Producer Medellín">
+    <meta property="og:description" content="DJ y Productor de Hardstyle en Medellín. Escucha mi discografía, descarga mi Rider Técnico y gestiona bookings oficiales.">
+    <meta property="og:image" content="https://alejillo8405.github.io/epk-thedjslett/logo.webp">
+    <meta property="og:url" content="https://alejillo8405.github.io/epk-thedjslett/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TheDJSlett | Hardstyle DJ & Producer Medellín">
+    <meta name="twitter:description" content="DJ y Productor de Hardstyle en Medellín. Escucha mi discografía, descarga mi Rider Técnico y gestiona bookings oficiales.">
+    <meta name="twitter:image" content="https://alejillo8405.github.io/epk-thedjslett/logo.webp">
     <style>
         :root {
             --neon-lime: #32ff00;
@@ -271,6 +282,8 @@
             <li><strong>Ubicación:</strong> Medellín, Colombia</li>
             <li><strong>Formato:</strong> USB / CDJ Ready</li>
         </ul>
+
+        <a href="rider-thedjslett.pdf" download class="btn-booking" style="display:inline-block; text-decoration:none;">Descargar Rider Técnico (PDF)</a>
     </div>
 </div>
 
@@ -333,14 +346,29 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     let gameActive = false;
+    let gameLoopId = null;
     let score = 0;
+
+    // Detiene el loop de verdad al salir de la pestaña, en vez de
+    // dejarlo corriendo en segundo plano indefinidamente.
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            if(btn.getAttribute("data-tab") !== 'play' && gameLoopId !== null) {
+                cancelAnimationFrame(gameLoopId);
+                gameLoopId = null;
+                gameActive = false;
+            }
+        });
+    });
 
     function initGame() {
         if(gameActive) return;
         gameActive = true;
+        score = 0;
         const canvas = document.getElementById("gameCanvas");
         const ctx = canvas.getContext("2d");
         const scoreDisplay = document.getElementById("gameScore");
+        scoreDisplay.innerText = score.toString().padStart(3, '0');
         let x = 200, y = 150, dx = 4, dy = 4;
 
         canvas.onmousedown = (e) => {
@@ -367,9 +395,6 @@ document.addEventListener("DOMContentLoaded", function() {
         };
 
         function loop() {
-            if(!document.getElementById("play").classList.contains("active")) {
-                requestAnimationFrame(loop); return;
-            }
             ctx.fillStyle = "rgba(0,0,0,0.25)";
             ctx.fillRect(0,0,400,300);
             x += dx; y += dy;
@@ -379,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function() {
             ctx.arc(x, y, 15, 0, Math.PI*2);
             ctx.fillStyle = "#32ff00";
             ctx.fill();
-            requestAnimationFrame(loop);
+            gameLoopId = requestAnimationFrame(loop);
         }
         loop();
     }
