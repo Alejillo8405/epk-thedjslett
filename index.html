@@ -503,7 +503,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function loadShows() {
         if(typeof Papa === 'undefined') return;
-        Papa.parse(SHOWS_CSV_URL, {
+        const cacheBustedUrl = SHOWS_CSV_URL + "&_=" + Date.now();
+        Papa.parse(cacheBustedUrl, {
             download: true,
             header: true,
             skipEmptyLines: true,
