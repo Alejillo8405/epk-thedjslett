@@ -6,7 +6,10 @@
     <title>TheDJSlett | Hardstyle DJ & Producer Medellín</title>
     <meta name="description" content="TheDJSlett: DJ y Productor de Hardstyle en Medellín. Escucha mi discografía, descarga mi Rider Técnico y gestiona bookings oficiales.">
     <meta name="keywords" content="TheDJSlett, Hardstyle Medellín, DJ Hardstyle Colombia, Productor Harddance, EPK DJ">
+    <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" href="logo.webp" type="image/webp">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
 
     <!-- Open Graph / redes sociales -->
     <meta property="og:type" content="website">
@@ -125,6 +128,20 @@
             font-weight: bold;
         }
         .social-links a:hover { background: var(--neon-lime); color: black; }
+
+        .lang-toggle { display: flex; gap: 8px; }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid #444;
+            color: #888;
+            padding: 5px 14px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .lang-btn.active-lang { border-color: var(--neon-lime); color: var(--neon-lime); }
 
         /* WhatsApp Flotante */
         .wpp-float {
@@ -247,35 +264,42 @@
     <img src="logo.webp" alt="TheDJSlett Logo"> 
     <h1>TheDJSlett</h1>
     <p>HARDSTYLE DJ / PRODUCER</p>
-    <span class="social-proof">26 Tracks publicados | Medellín Hardstyle Scene | CDJ Ready</span>
-    <button onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking">INICIAR BOOKING</button>
+    <span class="social-proof" data-i18n="hero.socialProof">26 Tracks publicados | Medellín Hardstyle Scene | CDJ Ready</span>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center;">
+        <button onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking" data-i18n="hero.bookingBtn">INICIAR BOOKING</button>
+        <button id="shareBtn" class="btn-booking" style="background:transparent; border:2px solid var(--neon-lime); color:var(--neon-lime);" data-i18n="hero.share">Compartir EPK</button>
+    </div>
     <div class="social-links">
         <a href="https://open.spotify.com/intl-es/artist/2dsFFDlP0HN09zODqQqfem" target="_blank" rel="noopener noreferrer">Spotify</a>
         <a href="https://www.instagram.com/thedjslett" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://youtube.com/@thedjslett" target="_blank" rel="noopener noreferrer">YouTube</a>
     </div>
+    <div class="lang-toggle" style="margin-top:18px;">
+        <button id="langEs" class="lang-btn active-lang" data-lang="es">ES</button>
+        <button id="langEn" class="lang-btn" data-lang="en">EN</button>
+    </div>
 </div>
 
 <nav id="navbar">
-    <button data-tab="home" class="active-btn">Inicio</button>
-    <button data-tab="music">Música</button>
-    <button data-tab="media">Media</button>
-    <button data-tab="bio">Bio & Rider</button>
-    <button data-tab="contact">Contacto</button>
-    <button data-tab="play">Playground</button>
+    <button data-tab="home" class="active-btn" data-i18n="nav.home">Inicio</button>
+    <button data-tab="music" data-i18n="nav.music">Música</button>
+    <button data-tab="media" data-i18n="nav.media">Media</button>
+    <button data-tab="bio" data-i18n="nav.bio">Bio & Rider</button>
+    <button data-tab="contact" data-i18n="nav.contact">Contacto</button>
+    <button data-tab="play" data-i18n="nav.play">Playground</button>
 </nav>
 
 <div id="home" class="tab active">
     <div class="card" style="text-align: center;">
-        <h2>System Check</h2>
-        <p style="color: var(--text-gray);">Carga los sistemas de audio para el próximo Drop.</p>
-        <button id="dropBtn">DISPARAR KICK</button>
+        <h2 data-i18n="home.title">System Check</h2>
+        <p style="color: var(--text-gray);" data-i18n="home.desc">Carga los sistemas de audio para el próximo Drop.</p>
+        <button id="dropBtn" data-i18n="home.dropBtn">DISPARAR KICK</button>
     </div>
 </div>
 
 <div id="music" class="tab">
     <div class="card">
-        <h2>Discografía Oficial</h2>
+        <h2 data-i18n="music.title">Discografía Oficial</h2>
         <iframe data-testid="embed-iframe" style="border-radius:12px" data-src="https://open.spotify.com/embed/artist/2dsFFDlP0HN09zODqQqfem?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 </div>
@@ -290,28 +314,28 @@
 <div id="bio" class="tab">
     <div class="card">
         <h2>The Artist</h2>
-        <p style="line-height: 1.8; color: var(--text-gray); font-style: italic; border-left: 2px solid var(--neon-lime); padding-left: 15px;">
+        <p style="line-height: 1.8; color: var(--text-gray); font-style: italic; border-left: 2px solid var(--neon-lime); padding-left: 15px;" data-i18n="bio.quote">
             "Sets diseñados para pista, energía sin concesiones y enfoque directo a festivales."
         </p>
-        <p style="line-height: 1.8; color: var(--text-gray); margin-top: 20px;">
+        <p style="line-height: 1.8; color: var(--text-gray); margin-top: 20px;" data-i18n="bio.paragraph">
             Originario de Envigado, TheDJSlett fusiona su formación como Ingeniero Electrónico en la IUE con la potencia del Harddance. Miembro de La Cantera Studios, su enfoque técnico garantiza una calidad sonora superior en cada drop.
         </p>
         <h2 style="margin-top: 40px;">Technical Rider</h2>
         <ul class="rider-list">
-            <li>2x Pioneer CDJ-2000 NXS2 o superior</li>
-            <li>1x Pioneer DJM-900 NXS2 / DJM-V10</li>
-            <li>Monitoreo: 2 monitores activos de alta potencia</li>
+            <li data-i18n="bio.riderItem1">2x Pioneer CDJ-2000 NXS2 o superior</li>
+            <li data-i18n="bio.riderItem2">1x Pioneer DJM-900 NXS2 / DJM-V10</li>
+            <li data-i18n="bio.riderItem3">Monitoreo: 2 monitores activos de alta potencia</li>
         </ul>
 
-        <h2 style="margin-top: 40px;">Booking Info (Promotores)</h2>
+        <h2 style="margin-top: 40px;" data-i18n="bio.bookingInfoTitle">Booking Info (Promotores)</h2>
         <ul class="rider-list">
-            <li><strong>Estilo:</strong> Hardstyle / Rawstyle</li>
-            <li><strong>Duración:</strong> 60 - 90 Minutos</li>
-            <li><strong>Ubicación:</strong> Medellín, Colombia</li>
-            <li><strong>Formato:</strong> USB / CDJ Ready</li>
+            <li><strong data-i18n="bio.style">Estilo:</strong> Hardstyle / Rawstyle</li>
+            <li><strong data-i18n="bio.duration">Duración:</strong> <span data-i18n="bio.durationValue">60 - 90 Minutos</span></li>
+            <li><strong data-i18n="bio.location">Ubicación:</strong> Medellín, Colombia</li>
+            <li><strong data-i18n="bio.format">Formato:</strong> USB / CDJ Ready</li>
         </ul>
 
-        <a href="rider-thedjslett.pdf" download class="btn-booking" style="display:inline-block; text-decoration:none;">Descargar Rider Técnico (PDF)</a>
+        <a href="rider-thedjslett.pdf" download class="btn-booking" style="display:inline-block; text-decoration:none;" data-i18n="bio.downloadRider">Descargar Rider Técnico (PDF)</a>
     </div>
 </div>
 
@@ -320,18 +344,18 @@
         <h2>Booking & Inquiry</h2>
         <form id="bookingForm" class="contact-form" action="https://formspree.io/f/mqewqywp" method="POST">
             <div class="form-group">
-                <label>Nombre / Promotora</label>
-                <input type="text" name="name" required>
+                <label for="bookingName" data-i18n="contact.name">Nombre / Promotora</label>
+                <input type="text" id="bookingName" name="name" required>
             </div>
             <div class="form-group">
-                <label>Correo Electrónico De Contacto</label>
-                <input type="email" name="email" required>
+                <label for="bookingEmail" data-i18n="contact.email">Correo Electrónico De Contacto</label>
+                <input type="email" id="bookingEmail" name="email" required>
             </div>
             <div class="form-group">
-                <label>Mensaje / Detalles del Evento</label>
-                <textarea name="message" rows="5" required></textarea>
+                <label for="bookingMessage" data-i18n="contact.message">Mensaje / Detalles del Evento</label>
+                <textarea id="bookingMessage" name="message" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn-send">ENVIAR SOLICITUD</button>
+            <button type="submit" class="btn-send" data-i18n="contact.submit">ENVIAR SOLICITUD</button>
             <p id="formStatus" style="display:none; text-align:center; font-weight:bold; margin-top:10px;"></p>
         </form>
     </div>
@@ -356,6 +380,87 @@ document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.querySelectorAll("nav button");
     const tabs = document.querySelectorAll(".tab");
     const sfxDrop = document.getElementById("sfxDrop");
+
+    // ---------- Idioma ES/EN ----------
+    const translations = {
+        en: {
+            "nav.home": "Home",
+            "nav.music": "Music",
+            "nav.media": "Media",
+            "nav.bio": "Bio & Rider",
+            "nav.contact": "Contact",
+            "nav.play": "Playground",
+            "hero.socialProof": "26 Tracks Released | Medellín Hardstyle Scene | CDJ Ready",
+            "hero.bookingBtn": "START BOOKING",
+            "hero.share": "Share EPK",
+            "home.title": "System Check",
+            "home.desc": "Load the audio systems for the next Drop.",
+            "home.dropBtn": "TRIGGER KICK",
+            "music.title": "Official Discography",
+            "bio.quote": "\"Sets built for the dancefloor, no-compromise energy, and a direct focus on festivals.\"",
+            "bio.paragraph": "Originally from Envigado, TheDJSlett blends his training as an Electronic Engineer at IUE with the power of Harddance. A member of La Cantera Studios, his technical approach guarantees superior sound quality on every drop.",
+            "bio.riderItem1": "2x Pioneer CDJ-2000 NXS2 or higher",
+            "bio.riderItem2": "1x Pioneer DJM-900 NXS2 / DJM-V10",
+            "bio.riderItem3": "Monitoring: 2 high-power active monitors",
+            "bio.bookingInfoTitle": "Booking Info (Promoters)",
+            "bio.style": "Style:",
+            "bio.duration": "Duration:",
+            "bio.durationValue": "60 - 90 Minutes",
+            "bio.location": "Location:",
+            "bio.format": "Format:",
+            "bio.downloadRider": "Download Technical Rider (PDF)",
+            "contact.name": "Name / Promoter",
+            "contact.email": "Contact Email",
+            "contact.message": "Message / Event Details",
+            "contact.submit": "SEND REQUEST"
+        }
+    };
+
+    const originalEs = {};
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        originalEs[el.getAttribute("data-i18n")] = el.textContent;
+    });
+
+    function setLanguage(lang) {
+        document.documentElement.lang = lang;
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            const text = lang === "en" ? (translations.en[key] || originalEs[key]) : originalEs[key];
+            el.textContent = text;
+        });
+        document.getElementById("langEs").classList.toggle("active-lang", lang === "es");
+        document.getElementById("langEn").classList.toggle("active-lang", lang === "en");
+        localStorage.setItem("thedjslett_lang", lang);
+        if(typeof gtag === 'function') {
+            gtag('event', 'language_change', { language: lang });
+        }
+    }
+
+    document.getElementById("langEs").addEventListener("click", () => setLanguage("es"));
+    document.getElementById("langEn").addEventListener("click", () => setLanguage("en"));
+
+    const savedLang = localStorage.getItem("thedjslett_lang");
+    if(savedLang === "en") setLanguage("en");
+
+    // ---------- Compartir EPK ----------
+    document.getElementById("shareBtn").addEventListener("click", async () => {
+        const shareData = {
+            title: "TheDJSlett | Hardstyle DJ & Producer",
+            text: "Mirá el EPK oficial de TheDJSlett",
+            url: "https://alejillo8405.github.io/epk-thedjslett/"
+        };
+        if(typeof gtag === 'function') gtag('event', 'share_click');
+        if(navigator.share) {
+            navigator.share(shareData).catch(() => {});
+        } else {
+            try {
+                await navigator.clipboard.writeText(shareData.url);
+                alert("🔗 Link copiado al portapapeles");
+            } catch (e) {
+                prompt("Copiá el link:", shareData.url);
+            }
+        }
+    });
 
     buttons.forEach(btn => {
         btn.addEventListener("click", () => {
