@@ -143,6 +143,41 @@
         }
         .lang-btn.active-lang { border-color: var(--neon-lime); color: var(--neon-lime); }
 
+        .show-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            background: var(--input-bg);
+            border: 1px solid #333;
+            border-left: 4px solid var(--neon-lime);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .show-card .show-date {
+            color: var(--neon-lime);
+            font-weight: 900;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            min-width: 120px;
+        }
+        .show-card .show-info { flex: 1; min-width: 180px; }
+        .show-card .show-city { color: white; font-weight: bold; }
+        .show-card .show-venue { color: var(--text-gray); font-size: 0.9rem; }
+        .show-card .show-link {
+            color: black;
+            background: var(--neon-lime);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
         /* WhatsApp Flotante */
         .wpp-float {
             position: fixed;
@@ -315,10 +350,13 @@
 <div id="shows" class="tab">
     <div class="card" style="text-align:center;">
         <h2 data-i18n="shows.title">Próximas Fechas</h2>
-        <p style="color: var(--text-gray); font-size: 3rem; margin: 10px 0;">📅</p>
-        <p style="color: var(--text-gray); line-height: 1.8;" data-i18n="shows.desc">
-            Todavía no hay fechas confirmadas para publicar, pero estoy activamente disponible para bookings en Medellín, Colombia y para viajar. Escribime y armamos algo.
-        </p>
+        <div id="showsList" style="display:none; text-align:left; margin-top:20px;"></div>
+        <div id="showsEmpty">
+            <p style="color: var(--text-gray); font-size: 3rem; margin: 10px 0;">📅</p>
+            <p style="color: var(--text-gray); line-height: 1.8;" data-i18n="shows.desc">
+                Todavía no hay fechas confirmadas para publicar, pero estoy activamente disponible para bookings en Medellín, Colombia y para viajar. Escribime y armamos algo.
+            </p>
+        </div>
         <button onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking" style="margin-top:15px;" data-i18n="shows.cta">CONSULTAR DISPONIBILIDAD</button>
     </div>
 </div>
@@ -387,6 +425,7 @@
 
 <audio id="sfxDrop"><source src="drop.mp3" type="audio/mpeg"></audio>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const buttons = document.querySelectorAll("nav button");
@@ -450,6 +489,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if(typeof gtag === 'function') {
             gtag('event', 'language_change', { language: lang });
         }
+        loadShows();
     }
 
     document.getElementById("langEs").addEventListener("click", () => setLanguage("es"));
@@ -457,6 +497,66 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const savedLang = localStorage.getItem("thedjslett_lang");
     if(savedLang === "en") setLanguage("en");
+
+    // ---------- Próximos Shows (Google Sheet publicada como CSV) ----------
+    const SHOWS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS_GCExiPDsscD-1umhyqqSibtk2q0IEKcfsMBlo1wogHJ9j_XQ3HKKjw2FIuISsxxtuaRIeTWP5kxg/pub?gid=0&single=true&output=csv";
+
+    function loadShows() {
+        if(typeof Papa === 'undefined') return;
+        Papa.parse(SHOWS_CSV_URL, {
+            download: true,
+            header: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                const today = new Date();
+                today.setHours(0,0,0,0);
+
+                const upcoming = results.data
+                    .map(row => ({
+                        fecha: (row.fecha || "").trim(),
+                        ciudad: (row.ciudad || "").trim(),
+                        lugar: (row.lugar || "").trim(),
+                        link: (row.link || "").trim(),
+                        dateObj: new Date((row.fecha || "").trim())
+                    }))
+                    .filter(show => show.fecha && !isNaN(show.dateObj) && show.dateObj >= today)
+                    .sort((a, b) => a.dateObj - b.dateObj);
+
+                if(upcoming.length === 0) return; // se queda el mensaje de "disponible para bookings"
+
+                const listEl = document.getElementById("showsList");
+                const emptyEl = document.getElementById("showsEmpty");
+                const lang = document.documentElement.lang === 'en' ? 'en' : 'es';
+                const monthNames = lang === 'en'
+                    ? ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"]
+                    : ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+
+                listEl.innerHTML = upcoming.map(show => {
+                    const day = show.dateObj.getUTCDate();
+                    const month = monthNames[show.dateObj.getUTCMonth()];
+                    const linkHtml = show.link
+                        ? `<a href="${show.link.replace(/"/g,'')}" target="_blank" rel="noopener noreferrer" class="show-link">${lang === 'en' ? 'Details' : 'Detalles'}</a>`
+                        : "";
+                    return `
+                        <div class="show-card">
+                            <div class="show-date">${day} ${month}</div>
+                            <div class="show-info">
+                                <div class="show-city">${show.ciudad}</div>
+                                <div class="show-venue">${show.lugar}</div>
+                            </div>
+                            ${linkHtml}
+                        </div>`;
+                }).join("");
+
+                listEl.style.display = "block";
+                emptyEl.style.display = "none";
+            },
+            error: function() {
+                // si falla la carga, se queda el mensaje por defecto de disponibilidad
+            }
+        });
+    }
+    loadShows();
 
     // ---------- Compartir EPK ----------
     document.getElementById("shareBtn").addEventListener("click", async () => {
