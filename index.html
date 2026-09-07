@@ -335,6 +335,8 @@ document.addEventListener("DOMContentLoaded", function() {
             buttons.forEach(b => b.classList.remove("active-btn"));
             document.getElementById(target).classList.add("active");
             btn.classList.add("active-btn");
+            sfxDrop.pause();
+            sfxDrop.currentTime = 0;
             if(target === 'play') initGame();
             window.scrollTo({top: 0, behavior: 'smooth'});
         });
