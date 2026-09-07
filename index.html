@@ -284,6 +284,7 @@
     <button data-tab="home" class="active-btn" data-i18n="nav.home">Inicio</button>
     <button data-tab="music" data-i18n="nav.music">Música</button>
     <button data-tab="media" data-i18n="nav.media">Media</button>
+    <button data-tab="shows" data-i18n="nav.shows">Shows</button>
     <button data-tab="bio" data-i18n="nav.bio">Bio & Rider</button>
     <button data-tab="contact" data-i18n="nav.contact">Contacto</button>
     <button data-tab="play" data-i18n="nav.play">Playground</button>
@@ -308,6 +309,17 @@
     <div class="card">
         <h2>Visuals & Live Performances</h2>
         <iframe width="100%" height="450" data-src="https://www.youtube.com/embed/cX31J616-Tc" frameborder="0" allowfullscreen style="border-radius: 12px; border: 1px solid #333;"></iframe>
+    </div>
+</div>
+
+<div id="shows" class="tab">
+    <div class="card" style="text-align:center;">
+        <h2 data-i18n="shows.title">Próximas Fechas</h2>
+        <p style="color: var(--text-gray); font-size: 3rem; margin: 10px 0;">📅</p>
+        <p style="color: var(--text-gray); line-height: 1.8;" data-i18n="shows.desc">
+            Todavía no hay fechas confirmadas para publicar, pero estoy activamente disponible para bookings en Medellín, Colombia y para viajar. Escribime y armamos algo.
+        </p>
+        <button onclick="document.querySelector('[data-tab=contact]').click()" class="btn-booking" style="margin-top:15px;" data-i18n="shows.cta">CONSULTAR DISPONIBILIDAD</button>
     </div>
 </div>
 
@@ -387,9 +399,13 @@ document.addEventListener("DOMContentLoaded", function() {
             "nav.home": "Home",
             "nav.music": "Music",
             "nav.media": "Media",
+            "nav.shows": "Shows",
             "nav.bio": "Bio & Rider",
             "nav.contact": "Contact",
             "nav.play": "Playground",
+            "shows.title": "Upcoming Dates",
+            "shows.desc": "No confirmed dates to publish yet, but I'm actively available for bookings in Medellín, Colombia and open to travel. Reach out and let's set something up.",
+            "shows.cta": "CHECK AVAILABILITY",
             "hero.socialProof": "26 Tracks Released | Medellín Hardstyle Scene | CDJ Ready",
             "hero.bookingBtn": "START BOOKING",
             "hero.share": "Share EPK",
