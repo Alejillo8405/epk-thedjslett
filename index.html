@@ -287,6 +287,49 @@
             margin: 0 auto 25px auto;
         }
 
+        /* Logros y trayectoria */
+        .achievement {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            padding: 22px 0;
+            border-bottom: 1px solid #222;
+        }
+        .achievement:last-child { border-bottom: none; }
+        .achievement-badge {
+            flex-shrink: 0;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: rgba(50,255,0,0.08);
+            border: 2px solid var(--neon-lime);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: 0 0 15px rgba(50,255,0,0.3);
+        }
+        .achievement-body h3 {
+            color: var(--neon-lime);
+            font-size: 1.1rem;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+        .achievement-body p {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin: 0 0 10px 0;
+        }
+        .achievement-quote {
+            font-style: italic;
+            border-left: 2px solid var(--neon-lime);
+            padding-left: 14px;
+            color: #fff !important;
+        }
+        @media (max-width: 500px) {
+            .achievement { flex-direction: column; align-items: center; text-align: center; }
+        }
+
         /* WhatsApp Flotante */
         .wpp-float {
             position: fixed;
@@ -538,6 +581,7 @@
     <button data-tab="media" data-i18n="nav.media">Media</button>
     <button data-tab="shows" data-i18n="nav.shows">Shows</button>
     <button data-tab="bio" data-i18n="nav.bio">Bio & Rider</button>
+    <button data-tab="logros" data-i18n="nav.logros">Logros</button>
     <button data-tab="contact" data-i18n="nav.contact">Contacto</button>
     <button data-tab="play" data-i18n="nav.play">Playground</button>
 </nav>
@@ -610,7 +654,37 @@
     </div>
 </div>
 
+<div id="logros" class="tab">
+    <div class="card">
+        <h2 data-i18n="logros.title">Logros y Trayectoria</h2>
+
+        <div class="achievement">
+            <div class="achievement-badge">🥈</div>
+            <div class="achievement-body">
+                <h3 data-i18n="logros.remix.title">2do Lugar — Higher Place Remix Contest</h3>
+                <p data-i18n="logros.remix.desc">
+                    Entre remixes de productores de México, España y Colombia, mi versión de "Higher Place" obtuvo 7.8/10 de un panel de evaluación internacional, quedando en el 2do puesto general del concurso.
+                </p>
+                <p class="achievement-quote" data-i18n="logros.remix.quote">
+                    "Uno de los remixes con mejor criterio musical del concurso. Sound design consistente y superior al promedio."
+                </p>
+            </div>
+        </div>
+
+        <div class="achievement">
+            <div class="achievement-badge">🎓</div>
+            <div class="achievement-body">
+                <h3 data-i18n="logros.cantera.title">La Cantera — Mentoría con Bullnene y la Alcaldía de Envigado</h3>
+                <p data-i18n="logros.cantera.desc">
+                    Participé en La Cantera, el proyecto social y musical del productor René "Bullnene" Cano (J Balvin, Karol G, Maluma, Manuel Turizo, Juanes) junto a la Alcaldía de Envigado para descubrir y formar nuevo talento musical del municipio. Aunque no clasifiqué al álbum oficial del concurso, recibí mentoría directa de referentes de la industria musical de la región.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div id="contact" class="tab">
+
     <div class="card">
         <h2>Booking & Inquiry</h2>
         <form id="bookingForm" class="contact-form" action="https://formspree.io/f/mqewqywp" method="POST">
@@ -678,6 +752,7 @@ document.addEventListener("DOMContentLoaded", function() {
             "nav.media": "Media",
             "nav.shows": "Shows",
             "nav.bio": "Bio & Rider",
+            "nav.logros": "Achievements",
             "nav.contact": "Contact",
             "nav.play": "Playground",
             "shows.title": "Upcoming Dates",
@@ -702,6 +777,12 @@ document.addEventListener("DOMContentLoaded", function() {
             "bio.location": "Location:",
             "bio.format": "Format:",
             "bio.downloadRider": "Download Technical Rider (PDF)",
+            "logros.title": "Achievements & Track Record",
+            "logros.remix.title": "2nd Place — Higher Place Remix Contest",
+            "logros.remix.desc": "Among remixes from producers in Mexico, Spain and Colombia, my version of \"Higher Place\" scored 7.8/10 from an international judging panel, placing 2nd overall in the contest.",
+            "logros.remix.quote": "\"One of the remixes with the best musical judgment in the contest. Consistent sound design, above the contest average.\"",
+            "logros.cantera.title": "La Cantera — Mentorship with Bullnene and the Envigado City Government",
+            "logros.cantera.desc": "I took part in La Cantera, the social and musical project by producer René \"Bullnene\" Cano (J Balvin, Karol G, Maluma, Manuel Turizo, Juanes) together with the Envigado city government, aimed at discovering and training new musical talent from the municipality. While I didn't make the contest's official album, I received direct mentorship from leading names in the region's music industry.",
             "contact.name": "Name / Promoter",
             "contact.email": "Contact Email",
             "contact.message": "Message / Event Details",
